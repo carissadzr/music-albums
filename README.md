@@ -1,5 +1,6 @@
-Carissa Aida Zahra - 2206082543
-PBP D
+Nama : Carissa Aida Zahra
+NPM : 2206082543
+Kelas : PBP D
 
 Membuat sebuah README.md yang berisi tautan menuju aplikasi Adaptable yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
 - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
