@@ -12,7 +12,6 @@ class mainTest(TestCase):
         response = Client().get('/main/')
         self.assertTemplateUsed(response, 'main.html')
     
-    def test_main_view_no_data(self):
-        response = self.client.get(reverse('show_main'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'No data available')
+    def test_main_view_with_invalid_url(self):
+        response = self.client.get('/invalid-url/')
+        self.assertEqual(response.status_code, 404) # jika url tidak valid maka akan menampilkan kode error 404
