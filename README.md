@@ -8,7 +8,7 @@ Tautan menuju aplikasi Adaptable : https://musicalbumapp.adaptable.app
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
- http request -> urls.py
+http request -> urls.py
                     |
                     v
         melakukan forward request
