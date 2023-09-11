@@ -14,4 +14,4 @@ class mainTest(TestCase):
     
     def test_main_view_with_invalid_url(self):
         response = self.client.get('/invalid-url/')
-        self.assertEqual(response.status_code, 404) # jika url tidak valid maka akan menampilkan kode error 404
+        self.assertEqual(response.status_code, 404) # jika url tidak valid maka akan menampilkan kode error 404                                                                 
