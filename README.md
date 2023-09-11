@@ -9,16 +9,17 @@ Tautan menuju aplikasi Adaptable : https://musicalbumapp.adaptable.app
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
 ```````
-http request -> urls.py
-                    |
-                    v
-        melakukan forward request
-                    |                            models.py
-                    v                          /
-    membaca atau menambahkan data --> views.py 
-                    |                          \
-                    v                            html file
-                models.py
+                                         http request -> urls.py
+                                                    |
+                                                    v
+                                        melakukan forward request
+                                                    |                            
+                                                    v                          
+      models.py --> membaca/menambahkan data --> views.py --> http response (html file)
+                                                    ^
+                                                    |
+                                             template (html)
+
 ```````
 
 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
