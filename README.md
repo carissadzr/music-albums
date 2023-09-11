@@ -24,7 +24,7 @@ b. MVT (Model-View-Template) : MVT adalah suatu prinsip desain yang diterapkan d
 - View = menampilkan data yang berasal dari Model dan mengintegrasikannya dengan template
 - Template = menyusun tampilan antarmuka pengguna dengan menentukan struktur dan tampilan elemen-elemen antarmuka
 
-c. MVVM (Model-View-ViewModel): MVVVM umumnya diterapkan dalam pengembangan aplikasi antarmuka pengguna atau user interface (UI).
+c. MVVM (Model-View-ViewModel): MVVM umumnya diterapkan dalam pengembangan aplikasi antarmuka pengguna atau user interface (UI).
 - Model = menyimpan data dan mengimplementasikan logika aplikasi
 - View = menampilkan data yang berasal dari Model dan mengintegrasikannya dengan template
 - ViewModel = memuat logika presentasi serta menyiapkan data yang akan ditampilkan di View
