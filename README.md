@@ -62,10 +62,11 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 - HTML merupakan bahasa yang biasa digunakan ketika akan membuat tampilan sebuah web dan interaksi pada tampilan pengguna. HTML mengatur elemen - elemen seperti gambar, tombol, teks, dan lain - lain dengan format <tag>konten</tag> 
 - Secara singkat, XML berfokus representasi struktur data, JSON berfokus pada pengiriman data antar sistem, dan HTML digunakan untuk merancang tampilan halaman web.
 
-Dengan demikian, XML dan JSON memiliki karakteristik yang berbeda dan digunakan dalam konteks yang berbeda-beda sesuai dengan kebutuhan dan preferensi dalam pengembangan dan pertukaran data.
-
 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
 - JSON sering digunakan dalam pertukaran data antara aplikasi web modern sebab data yang dikirim melalui JSON menggunakan format yang sederhana sehingga lebih mudah dibaca dan ditransfer, memiliki ukuran file yang lebih ringan, serta lebih fleksibel karena dapat digunakan dengan berbagai bahasa pemrograman. 
 
 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
-- 
+- Pertama, saya mereview kembali apa saja yang sudah dilakukan di tutorial 2 saat lab. Mulai dari materinya, implementasi yang terjadi pada program sebelum dan sesudah dilakukan suatu perubahan, serta mencoba lebih familiar dengan penggunaan XML, JSON, dan Postman
+- Selanjutnya. selain dari tutorial, dalam pengerjaan tugas 3 ini saya melakukan beberapa modifikasi dalam kode yang sudah dibuat pada repo music_albums sebelumnya. Penyesuaian ini saya lakukan agar beberapa kode yang dijelaskan pada tutorial 2 kompatibel dengan kode yang saya kerjakan di tugas 2
+- Terakhir, saya menanyakan dan meminta penjelasan kepada asisten dosen ketika menemukan kendala dalam proses pengkodean atau membutuhkan penjelasan mengenai materi yang belum saya kuasai
+
