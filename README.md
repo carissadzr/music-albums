@@ -1,7 +1,10 @@
 **Carissa Aida Zahra (2206082543)**
 **PBP D**
-Adaptable : https://musicalbumapp.adaptable.app
-Current README.md : Tugas 2 dan 3
+
+- Adaptable : https://musicalbumapp.adaptable.app
+- Current README.md : Tugas 2 dan 3
+
+
 
 **TUGAS INDIVIDU 2**
 
@@ -46,6 +49,7 @@ c. MVVM (Model-View-ViewModel): MVVM umumnya diterapkan dalam pengembangan aplik
 Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat lunak mengatur struktur komponen dalam sebuah aplikasi dan mengelola interaksi antar komponen. Django memanfaatkan MVT untuk mencapai pemisahan logika aplikasi, MVC merupakan pola desain yang umum digunakan dalam pengembangan perangkat lunak, sedangkat MVVM digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI) yang mengandalkan banyak interaksi dari pengguna.
 
 
+
 **TUGAS INDIVIDU 3**
 
 1. Apa perbedaan antara form POST dan form GET dalam Django?
@@ -61,5 +65,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 Dengan demikian, XML dan JSON memiliki karakteristik yang berbeda dan digunakan dalam konteks yang berbeda-beda sesuai dengan kebutuhan dan preferensi dalam pengembangan dan pertukaran data.
 
 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+- JSON sering digunakan dalam pertukaran data antara aplikasi web modern sebab data yang dikirim melalui JSON menggunakan format yang sederhana sehingga lebih mudah dibaca dan ditransfer, memiliki ukuran file yang lebih ringan, serta lebih fleksibel karena dapat digunakan dengan berbagai bahasa pemrograman. 
 
 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- 
