@@ -70,3 +70,10 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 - Selanjutnya. selain dari tutorial, dalam pengerjaan tugas 3 ini saya melakukan beberapa modifikasi dalam kode yang sudah dibuat pada repo music_albums sebelumnya. Penyesuaian ini saya lakukan agar beberapa kode yang dijelaskan pada tutorial 2 kompatibel dengan kode yang saya kerjakan di tugas 2
 - Terakhir, saya menanyakan dan meminta penjelasan kepada asisten dosen ketika menemukan kendala dalam proses pengkodean atau membutuhkan penjelasan mengenai materi yang belum saya kuasai
 
+** Berikut screenshot dari hasil akses URL pada Postman**
+<img width="960" alt="image" src="https://github.com/carissadzr/music-albums/assets/124969497/ebb0df99-5117-4255-81e0-e13f016a09f3">
+![image](https://github.com/carissadzr/music-albums/assets/124969497/7a8cc898-d718-4c1e-8d23-267366c7db5a)
+![image](https://github.com/carissadzr/music-albums/assets/124969497/0353d344-c7e1-4824-b252-9a30d3145c8c)
+![image](https://github.com/carissadzr/music-albums/assets/124969497/0ad1a114-4973-4b79-ad26-332560ca1291)
+![image](https://github.com/carissadzr/music-albums/assets/124969497/4fd8b073-96a9-4370-aeb7-6a568479ad22)
+
