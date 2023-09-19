@@ -72,9 +72,17 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 
 **Berikut screenshot dari hasil akses URL pada Postman**
 
+<<<<<<< HEAD
 <img width="960" alt="image" src="https://github.com/carissadzr/music-albums/assets/124969497/ebb0df99-5117-4255-81e0-e13f016a09f3">
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/7a8cc898-d718-4c1e-8d23-267366c7db5a)
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/0353d344-c7e1-4824-b252-9a30d3145c8c)
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/0ad1a114-4973-4b79-ad26-332560ca1291)
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/4fd8b073-96a9-4370-aeb7-6a568479ad22)
+=======
+<img width="960" alt="image" src="https://github.com/carissadzr/music-albums/assets/124969497/8bdc1e4a-5c9e-4bad-ab15-634d50fcd96a">
+![image](https://github.com/carissadzr/music-albums/assets/124969497/f13f4030-9b23-421e-bc0d-db129f6cfd96)
+![image](https://github.com/carissadzr/music-albums/assets/124969497/751b8fa5-d3b3-475d-a3b8-bb88f9da9980)
+![image](https://github.com/carissadzr/music-albums/assets/124969497/69a10eac-9662-4349-9c2b-13f2bcf47dd9)
+![image](https://github.com/carissadzr/music-albums/assets/124969497/46a4551b-aff7-475a-8a22-096a78d5129b)
+>>>>>>> deb83baae2a8ab2af99d942100631e6518b7c5cf
 
