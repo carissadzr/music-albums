@@ -9,12 +9,13 @@
     <h5>Class:</h5>
     <p>{{class}}</p>
     
+    <p>You have saved {% if jumlah_item %}{{ jumlah_item }} albums{% endif %} in your collections!</p>
+
     <table>
         <tr>
             <th>Album</th>
             <th>Amount of Songs</th>
             <th>Description</th>
-            <th>Price</th>
         </tr>
     
         {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
@@ -24,7 +25,7 @@
                 <td>{{product.name}}</td>
                 <td>{{product.amount}}</td>
                 <td>{{product.description}}</td>
-                <td>{{product.price}}</td>
+                
             </tr>
         {% endfor %}
     </table>

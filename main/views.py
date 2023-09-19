@@ -6,15 +6,16 @@ from main.models import Product
 from django.http import HttpResponse
 from django.core import serializers
 
-
 # Create your views here.
 def show_main(request):
     products = Product.objects.all()
+    jumlah_item = Product.objects.count()
 
     context = {
         'name': 'Carissa Aida Zahra', # Nama kamu
         'class': 'PBP D', # Kelas PBP kamu
-        'products': products
+        'products': products,
+        'jumlah_item': jumlah_item,
     }
     return render(request, "main.html", context)
 
@@ -44,4 +45,8 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def product_list(request):
+    jumlah_item = Product.objects.count()
+    return render(request, 'main.html', {'jumlah_item': jumlah_item})
 
