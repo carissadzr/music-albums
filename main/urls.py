@@ -19,5 +19,7 @@ urlpatterns = [
     path('register/', register, name='register'), #sesuaikan dengan nama fungsi yang dibuat
     path('login/', login_user, name='login'), #sesuaikan dengan nama fungsi yang dibuat
     path('logout/', logout_user, name='logout'),
+    path('update_product_amount/', views.update_product_amount, name='update_product_amount'),
+    path('delete_product/', views.delete_product, name='delete_product'),
 ]
 

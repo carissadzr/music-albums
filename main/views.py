@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import Http404
 
 @login_required(login_url='/login')
 
@@ -96,3 +97,35 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+@login_required(login_url='/login')
+def update_product_amount(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        amount = request.POST.get('amount')
+
+        try:
+            product = Product.objects.get(pk=product_id)
+            if amount == 'add':
+                product.amount += 1
+            elif amount == 'reduce':
+                if product.amount > 0:
+                    product.amount -= 1
+            product.save()
+        except Product.DoesNotExist:
+            raise Http404
+
+    return redirect('main:show_main')
+
+@login_required(login_url='/login')
+def delete_product(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+
+        try:
+            product = Product.objects.get(pk=product_id, user=request.user)
+            product.delete()
+        except Product.DoesNotExist:
+            pass  # Produk tidak ditemukan atau sudah dihapus
+
+    return redirect('main:show_main')
