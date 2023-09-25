@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <body style="font-family: 'Croissant One', sans-serif; color: #B5838D;">
+    <style>
+        body {
+            background-color: #F7F9F7;
+        }
+    </style>
+
+    <h1>Music Albums</h1>
+
+    <h5>Name:</h5>
+    <p>{{name}}</p>
+
+    <h5>Class:</h5>
+    <p>{{class}}</p>
+    
+    <p style="text-align: center;">
+        <b>
+            You have saved {% if jumlah_item %}{{ jumlah_item }} albums{% endif %} in your collections!
+        </b>
+    </p>  
+      
+    <th> </th>
+
+    <table>
+        <tr>
+            <th>Album</th>
+            <th> </th>
+            <th>Amount of Songs</th>
+            <th> </th>
+            <th>Description</th>
+        </tr>
+    
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    
+        {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>
+                    <form method="post" action="{% url 'main:update_product_amount' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" name="amount" value="reduce">-</button>
+                    </form>
+                </td>
+                <td style="text-align: center;">{{ product.amount }}</td>
+                <td>
+                    <form method="post" action="{% url 'main:update_product_amount' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit" name="amount" value="add">+</button>
+                    </form>
+                </td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <form method="post" action="{% url 'main:delete_product' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <br />
+    
+    <a href="{% url 'main:create_product' %}">
+        <button>
+            Add New Product
+        </button>
+    </a>
+
+    <a href="{% url 'main:logout' %}">
+        <button>
+            Logout
+        </button>
+    </a>
+
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
+    </body>
+    
+    {% endblock content %}
