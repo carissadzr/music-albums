@@ -182,6 +182,236 @@ from main.views import register
 ...
 path('register/', register, name='register'), #sesuaikan dengan nama fungsi yang dibuat
 ...
-
 ```
 
+### Membuat Method Login
+
+Pada step ini, kita akan membuat form login untuk kepentingan autentikasi akun. Pertama kita akan mengimport dan membuat fungsi `login_user` pada file `views.py` yang berada pada subdirektori `main`.
+
+```
+from django.contrib.auth import authenticate, login
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('main:show_main')
+        else:
+            messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    context = {}
+    return render(request, 'login.html', context)
+```
+
+Untuk membuat tampilan pengisian data registrasi akun baru, kita akan membuat berkas HTML baru bernama `login.html` yang meng-_extend_ berkas `base.html` pada folder `main/templates` dengan isi berkas sebagai berikut
+
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "login">
+
+    <h1>Login</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+        
+    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+
+</div>
+
+{% endblock content %}
+```
+
+Lalu, kita akan kembali menambahkan method dan pathnya ke dalam `urls.py` pada subdirektori `main`.
+
+```
+from main.views import login_user 
+
+...
+path('login/', login_user, name='login'), #sesuaikan dengan nama fungsi yang dibuat
+...
+```
+
+### Membuat Method dan Tombol Logout
+
+Pada step ini kita akan membuat mekanisme _logout_ dan menambahkan tombolnya pada halaman utama. Pertama kita akan mengimport dan membuat fungsi `logout_user` pada file `views.py` yang berada pada subdirektori `main`.
+
+```
+from django.contrib.auth import logout
+
+def logout_user(request):
+    logout(request)
+    return redirect('main:login')
+```
+
+Selanjutnya, pada file `main.html` kita akan menambahkan potongan kode ini untuk memunculkan tombol logout
+
+```
+...
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
+    </button>
+</a>
+...
+```
+
+Untuk mengimplementasikan tampilan dan method logout yang sudah kita buat, kita akan melakukan import path fungsinya ke berkas `urls.py`
+
+```
+from main.views import logout_user
+
+...
+path('logout/', logout_user, name='logout'),
+...
+```
+
+### Restriksi Akses Halaman Utama
+
+Step ini dilakukan agar pengguna perlu melakukan proses login dan autentikasi untuk mengakses halaman web. Pertama, kita harus menambahkan import `login_required` pada file `views.py`.
+
+```
+from django.contrib.auth.decorators import login_required
+```
+
+Lalu menambahkan potongan kode berikut sebelum method `show_main` agar halaman web terestriksi.
+
+```
+...
+@login_required(login_url='/login')
+def show_main(request):
+...
+```
+
+Setelah tahap ini dilakukan, coba jalankan web menggunakan perintah `python manage.py runserver` dan buka http://localhost:8000/ untuk memunculkan halaman login yang sudah dibuat.
+
+### Menggunakan Data dari _Cookies_
+
+Sebelum memulai, pastikan bahwa tidak ada akun yang sedang login selama proses ini berjalan. Buka kembali `views.py` dan tambahkan tiga _import_ berikut.
+
+```
+import datetime
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+```
+
+Pada method `login_user` sebelumnya, kita akan menambahkan method cookie untuk melihat aktivitas login terbaru pengguna. Hal ini bisa dilakukan dengan **mengganti** kode pada blok `if user is not None` menjadi kode berikut.
+
+```
+...
+if user is not None:
+    login(request, user)
+    response = HttpResponseRedirect(reverse("main:show_main")) 
+    response.set_cookie('last_login', str(datetime.datetime.now()))
+    return response
+...
+```
+
+Lalu, pada method `show_main` tambahkan kode `last_login` berikut ke dalam variabel `context` untuk menambahkan informasi aktivitas login terakhir di halaman utama web.
+
+```
+context = {
+    'name': 'Pak Bepe',
+    'class': 'PBP A',
+    'products': products,
+    'last_login': request.COOKIES['last_login'],
+}
+```
+
+Kemudian, ubah potongan kode pada method `logout_user` seperti kode berikut untuk menghapus _cookie_ `last_login`` saat pengguna melakukan logout.
+
+```
+def logout_user(request):
+    logout(request)
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
+```
+
+Buka kembali file `main.html` dan tambahkan potongan kode berikut di antara tabel dan tombol logout untuk menampilkan data last login.
+
+```
+...
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+...
+```
+
+Setelah menyelesaikan step ini, coba lakukan _refresh_ halaman login atau jalankan projek Django untuk melihat informasi `last_login` akun pada halaman utama. Sebelum melanjutkan ke tutorial berikutnya, diharapkan untuk *membuat minimal satu akun lain baru* pada halaman web.
+
+### Menghubungkan Model `Product` dengan `User`
+Terakhir, kita akan menghubungkan setiap objek Product yang akan dibuat dengan pengguna yang membuatnya. Untuk melakukan tahap ini, pastikan bahwa step - step sebelumnya dilakukan secara terurut.
+
+Mulai dengan membuka `models.py` lalu impor model dengan menambahkan potongan kode berikut. Fungsinya untuk memastikan bahwa sebuah produk pasti terasosiasikan dengan seorang user.
+
+```
+from django.contrib.auth.models import User
+
+class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ...
+```
+
+Selanjutnya, buka file `views.py` dan ubah potongan kode pada method `create_product`. Bagian ini dilakukan untuk memungkinkan kit amelakukan modifikasi terhadap objek yang sudah dibuat sebelum disimpan ke database.
+
+```
+def create_product(request):
+ form = ProductForm(request.POST or None)
+
+ if form.is_valid() and request.method == "POST":
+     product = form.save(commit=False)
+     product.user = request.user
+     product.save()
+     return HttpResponseRedirect(reverse('main:show_main'))
+ ...
+```
+
+Kemudian, ubah method `show_main` menjadi kode berikut agar web yang kita buat akan menampilkan objek Product yang terasosiasikan dengan pengguna yang sedang login dan menampilkan username pengguna yang login pada halaman utama.
+
+```
+def show_main(request):
+    products = Product.objects.filter(user=request.user)
+
+    context = {
+        'name': request.user.username,
+    ...
+...
+```
+
+Setelah semua langkah dilakukan, simpan perubahan dan lakukan migrasi model dengan perintah `python manage.py makemigrations`. 
+
+Pada langkah ini akan muncul error saat melakukan migrasi, kita akan memilih opsi `1` sebanyak dua kali (satu untuk menetapkan default value untuk field user pada semua row yang telah dibuat pada basis data dan satu lagi untuk menetapkan user dengan ID 1 untuk model yang sudah dibuat sebelumnya). 
+
+Lakukan python manage.py migrate untuk mengaplikasikan migrasi yang dilakukan pada poin sebelumnya lalu jalankan project Django dengan membuka link http://localhost:8000/  di browser atau menjalankan perintah `python manage.py runserver`. Hasil akhir yang benar akan membuat produk yang tadi telah dibuat dengan akun sebelumnya tidak akan ditampilkan di halaman pengguna akun yang baru saja dibuat.
