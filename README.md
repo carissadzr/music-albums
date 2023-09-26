@@ -6,7 +6,7 @@
 
 
 
-**TUGAS INDIVIDU 2**
+### TUGAS INDIVIDU 2
 
 1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)**
 - Selain mengikuti tutorial 0 dan 1, dalam implementasi pengerjaan tugas individu 2 ini saya merujuk pada materi powerpoint yang dijelaskan di kelas dan membaca referensi dari beberapa website mengenai proses deployment dan penggunaan GitHub. Di samping itu, saya mencoba mencari referensi beberapa contoh unit testing yang sekiranya bisa saya implementasikan di project ini.
@@ -50,7 +50,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 
 
 
-**TUGAS INDIVIDU 3**
+### TUGAS INDIVIDU 3
 
 **1. Apa perbedaan antara form POST dan form GET dalam Django?**
 - Form POST pada Django mengirim data melalui badan request HTTP sehingga cocok untuk mengirim data - data yang lebih sensitif dalam jumlah banyak. Hal ini bisa dilakukan sebab form POST tidak dibatasi oleh kapasitas atau panjang URL. Selain itu, data yang dikirm melalui form POST adalah tipe data yang akan diproses oleh server.
@@ -81,7 +81,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/4fd8b073-96a9-4370-aeb7-6a568479ad22)
 
 
-**TUGAS INDIVIDU 4**
+### TUGAS INDIVIDU 4
 
  **1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?**
  - UserCreationForm dalam Django adalah sebuah formulir bawaan dalam kerangka kerja Django yang digunakan untuk membuat formulir pendaftaran pengguna dan merupakan bagian dari sistem otentikasi Django dan menyediakan cara mudah untuk membuat formulir pendaftaran yang mencakup bidang seperti nama pengguna, kata sandi, dan konfirmasi kata sandi
@@ -109,10 +109,28 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
  env\Scripts\activate.bat
  ``````
 
- Selanjutnya di file 'views.py' kita akan menambahkan beberapa import berikut untuk membuat UserCreationForm
+### Membuat Method dan Form Register
+
+ Selanjutnya di file `views.py` kita akan menambahkan beberapa import berikut untuk membuat UserCreationForm,
 
 ```
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
+```
+
+Kita akan membuat method `register` untuk menghasilkan form bagi pengguna yang akan membuat akun baru.
+
+```
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
 ```
