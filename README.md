@@ -59,6 +59,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 **2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?**
 
 **- XML (Extensible Markup Language)** mengadopsi konsep markup tags seperti <nama_tag>nilai</nama_tag>. Ini cenderung menghasilkan file dengan ukuran yang lebih besar dan umumnya digunakan dalam konteks yang lebih formal. XML memiliki kapasitas untuk mendukung berbagai jenis tipe data. Biasanya XML digunakan dalam situasi yang memerlukan struktur data yang kompleks dan memerlukan validasi data.
+
 **- JSON (JavaScript Object Notation)** menggunakan format pasangan nama-nilai seperti "nama": "nilai". JSON lebih mudah dibaca oleh manusia dan menghasilkan file dengan ukuran yang lebih kecil serta menggunakan format yang umum digunakan dalam pengembangan web dan aplikasi modern. Di sisi lain, JSON memiliki keterbatasan dalam mendukung berbagai jenis tipe data. JSON biasa digunakan untuk proses pertukaran data yang lebih ringan serta lebih mudah dibaca.
 - HTML merupakan bahasa yang biasa digunakan ketika akan membuat tampilan sebuah web dan interaksi pada tampilan pengguna. HTML mengatur elemen - elemen seperti gambar, tombol, teks, dan lain - lain dengan format <tag>konten</tag> 
 - Secara singkat, XML berfokus representasi struktur data, JSON berfokus pada pengiriman data antar sistem, dan HTML digunakan untuk merancang tampilan halaman web.
@@ -101,4 +102,17 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
  - Untuk mengelola risiko potensial terkait privasi dan keamanan, praktik terbaik melibatkan penggunaan protokol HTTPS dan memberikan opsi kepada pengguna untuk mengontrol cookies yang mereka terima, seperti melalui pengaturan privasi di browser pengguna
 
  **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
- - 
+ 
+ Pertama, sebelum membuat perubahan dari tugas sebelumnya kita menjalankan virtual environment terlebih dahulu
+
+ ``````
+ env\Scripts\activate.bat
+ ``````
+
+ Selanjutnya di file 'views.py' kita akan menambahkan beberapa import berikut untuk membuat UserCreationForm
+
+```
+from django.shortcuts import redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages  
+```
