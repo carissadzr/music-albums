@@ -78,3 +78,27 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/0353d344-c7e1-4824-b252-9a30d3145c8c)
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/0ad1a114-4973-4b79-ad26-332560ca1291)
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/4fd8b073-96a9-4370-aeb7-6a568479ad22)
+
+
+**TUGAS INDIVIDU 4**
+
+ 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+ - UserCreationForm dalam Django adalah sebuah formulir bawaan dalam kerangka kerja Django yang digunakan untuk membuat formulir pendaftaran pengguna dan merupakan bagian dari sistem otentikasi Django dan menyediakan cara mudah untuk membuat formulir pendaftaran yang mencakup bidang seperti nama pengguna, kata sandi, dan konfirmasi kata sandi
+ - Keuntungan : menyediakan validasi bawaan untuk memastikan bahwa kata sandi yang dimasukkan oleh pengguna sesuai dan memungkinkan integrasi yang mudah dengan model pengguna Django
+ - Kelemahan : sangat mendasar dan memerlukan penyesuaian tambahan jika ingin menambahkan fungsionalitas dan fitur tambahan
+
+ 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+ - Autentikasi adalah proses verifikasi identitas pengguna yang mengakses project Django, misalnya dari aspek username dan password ketika melakukan login akun
+ - Otorisasi adalah penentuan hak akses pengguna yang telah melalui proses autentikasi atau yang biasa diatur dalam "access permissions" dengan tujuan untuk mengendalikan akses pengguna ke tindakan atau data tertentu dalam aplikasi
+ - Kedua proses ini penting untuk memastikan bahwa pengguna yang mengakses aplikasi merupakan pihak yang berwenang dan keamanan berbagai data dalam aplikasi tetap terjaga
+
+ 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+ - Dalam lingkup aplikasi web, cookies merujuk pada berkas kecil yang disimpan di pihak user, umumnya di dalam peramban (browser), dan digunakan sebagai wadah penyimpanan informasi sesi pengguna atau data lain yang relevan. Django memanfaatkan cookies untuk mengelola data sesi pengguna, di antaraanya penyimpanan ID sesi, token otentikasi, atau preferensi user. Tujuannya adalah untuk melacak pengguna yang telah diotentikasi dan mempertahankan keadaan sesi ketika permintaan HTTP dilakukan
+
+ 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+ - Beberapa manfaat cookies dalam pengembangan web meliputi personalisasi preferensi pengguna, pengelolaan keadaan status pengguna (state management), otentikasi akses pengguna, dan mengumpulkan data seperti aktivitas pengguna
+ - Terdapat tantangan terkait penggunaan cookies meliputi masalah privasi, keamanan, serta beberapa batasan. Penggunaan cookies dapat menimbulkan masalah privasi dan keamanan jika tidak dikelola dengan baik (melacak aktivitas pengguna, mengambil data pribadi) serta memiliki keterbatasan dalam hal ukuran penyimpanan dan waktu kadaluwarsa
+ - Untuk mengelola risiko potensial terkait privasi dan keamanan, praktik terbaik melibatkan penggunaan protokol HTTPS dan memberikan opsi kepada pengguna untuk mengontrol cookies yang mereka terima, seperti melalui pengaturan privasi di browser pengguna
+
+ 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+ - 
