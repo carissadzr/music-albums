@@ -1,11 +1,10 @@
-### Carissa Aida Zahra (2206082543)
-### PBP D
+### Carissa Aida Zahra (2206082543) - PBP D
 
 - Adaptable : https://musicalbumapp.adaptable.app
-- Current README.md : Tugas 2 dan 3
+- Current README.md : Tugas 2, 3, dan 4 
 
 ### 
-### TUGAS INDIVIDU 2
+## TUGAS INDIVIDU 2
 
 1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)**
 - Selain mengikuti tutorial 0 dan 1, dalam implementasi pengerjaan tugas individu 2 ini saya merujuk pada materi powerpoint yang dijelaskan di kelas dan membaca referensi dari beberapa website mengenai proses deployment dan penggunaan GitHub. Di samping itu, saya mencoba mencari referensi beberapa contoh unit testing yang sekiranya bisa saya implementasikan di project ini.
@@ -49,7 +48,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 
 
 ###
-### TUGAS INDIVIDU 3
+## TUGAS INDIVIDU 3
 
 **1. Apa perbedaan antara form POST dan form GET dalam Django?**
 - Form POST pada Django mengirim data melalui badan request HTTP sehingga cocok untuk mengirim data - data yang lebih sensitif dalam jumlah banyak. Hal ini bisa dilakukan sebab form POST tidak dibatasi oleh kapasitas atau panjang URL. Selain itu, data yang dikirm melalui form POST adalah tipe data yang akan diproses oleh server.
@@ -81,7 +80,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 
 
 ###
-### TUGAS INDIVIDU 4
+## TUGAS INDIVIDU 4
 
  **1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?**
  - UserCreationForm dalam Django adalah sebuah formulir bawaan dalam kerangka kerja Django yang digunakan untuk membuat formulir pendaftaran pengguna dan merupakan bagian dari sistem otentikasi Django dan menyediakan cara mudah untuk membuat formulir pendaftaran yang mencakup bidang seperti nama pengguna, kata sandi, dan konfirmasi kata sandi
@@ -414,4 +413,4 @@ Setelah semua langkah dilakukan, simpan perubahan dan lakukan migrasi model deng
 
 Pada langkah ini akan muncul error saat melakukan migrasi, kita akan memilih opsi `1` sebanyak dua kali (satu untuk menetapkan default value untuk field user pada semua row yang telah dibuat pada basis data dan satu lagi untuk menetapkan user dengan ID 1 untuk model yang sudah dibuat sebelumnya). 
 
-Lakukan python manage.py migrate untuk mengaplikasikan migrasi yang dilakukan pada poin sebelumnya lalu jalankan project Django dengan membuka link http://localhost:8000/  di browser atau menjalankan perintah `python manage.py runserver`. Hasil akhir yang benar akan membuat produk yang tadi telah dibuat dengan akun sebelumnya tidak akan ditampilkan di halaman pengguna akun yang baru saja dibuat.
+Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan pada poin sebelumnya lalu jalankan project Django dengan membuka link http://localhost:8000/  di browser atau menjalankan perintah `python manage.py runserver`. Hasil akhir yang benar akan membuat produk yang tadi telah dibuat dengan akun sebelumnya tidak akan ditampilkan di halaman pengguna akun yang baru saja dibuat.
