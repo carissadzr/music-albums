@@ -73,6 +73,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 **Berikut screenshot dari hasil akses URL pada Postman**
 
 <img width="960" alt="image" src="https://github.com/carissadzr/music-albums/assets/124969497/b9d6f392-ec73-4489-8f04-52d38e58b193">
+
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/7a8cc898-d718-4c1e-8d23-267366c7db5a)
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/0353d344-c7e1-4824-b252-9a30d3145c8c)
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/0ad1a114-4973-4b79-ad26-332560ca1291)
