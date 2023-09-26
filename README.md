@@ -1,11 +1,10 @@
-**Carissa Aida Zahra (2206082543)**
-**PBP D**
+### Carissa Aida Zahra (2206082543)
+### PBP D
 
 - Adaptable : https://musicalbumapp.adaptable.app
 - Current README.md : Tugas 2 dan 3
 
-
-
+### 
 ### TUGAS INDIVIDU 2
 
 1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)**
@@ -49,7 +48,7 @@
 Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat lunak mengatur struktur komponen dalam sebuah aplikasi dan mengelola interaksi antar komponen. Django memanfaatkan MVT untuk mencapai pemisahan logika aplikasi, MVC merupakan pola desain yang umum digunakan dalam pengembangan perangkat lunak, sedangkat MVVM digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI) yang mengandalkan banyak interaksi dari pengguna.
 
 
-
+###
 ### TUGAS INDIVIDU 3
 
 **1. Apa perbedaan antara form POST dan form GET dalam Django?**
@@ -81,6 +80,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 ![image](https://github.com/carissadzr/music-albums/assets/124969497/4fd8b073-96a9-4370-aeb7-6a568479ad22)
 
 
+###
 ### TUGAS INDIVIDU 4
 
  **1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?**
@@ -111,7 +111,7 @@ Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat
 
 ### Membuat Method dan Form Register
 
- Selanjutnya di file `views.py` kita akan menambahkan beberapa import berikut untuk membuat UserCreationForm,
+Selanjutnya di file `views.py` kita akan menambahkan beberapa import berikut untuk membuat UserCreationForm,
 
 ```
 from django.shortcuts import redirect
@@ -134,3 +134,54 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 ```
+
+Untuk membuat tampilan registrasi akun baru, kita akan membuat berkas HTML baru bernama `register.html` yang meng-_extend_ berkas `base.html` pada folder `main/templates` dengan isi berkas sebagai berikut
+
+```
+{% extends 'base.html' %}
+
+{% block meta %}
+    <title>Register</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<div class = "login">
+    
+    <h1>Register</h1>  
+
+        <form method="POST" >  
+            {% csrf_token %}  
+            <table>  
+                {{ form.as_table }}  
+                <tr>  
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Daftar"/></td>  
+                </tr>  
+            </table>  
+        </form>
+
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+</div>  
+
+{% endblock content %}
+```
+
+Untuk mengimplementasikan tampilan dan method register yang sudah kita buat, kita akan melakukan import path fungsinya ke berkas `urls.py`
+
+```
+from main.views import register 
+
+...
+path('register/', register, name='register'), #sesuaikan dengan nama fungsi yang dibuat
+...
+
+```
+
