@@ -405,8 +405,7 @@ def show_main(request):
 
     context = {
         'name': request.user.username,
-    ...
-...
+    ......
 ```
 
 Setelah semua langkah dilakukan, simpan perubahan dan lakukan migrasi model dengan perintah `python manage.py makemigrations`. 
@@ -414,3 +413,61 @@ Setelah semua langkah dilakukan, simpan perubahan dan lakukan migrasi model deng
 Pada langkah ini akan muncul error saat melakukan migrasi, kita akan memilih opsi `1` sebanyak dua kali (satu untuk menetapkan default value untuk field user pada semua row yang telah dibuat pada basis data dan satu lagi untuk menetapkan user dengan ID 1 untuk model yang sudah dibuat sebelumnya). 
 
 Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan pada poin sebelumnya lalu jalankan project Django dengan membuka link http://localhost:8000/  di browser atau menjalankan perintah `python manage.py runserver`. Hasil akhir yang benar akan membuat produk yang tadi telah dibuat dengan akun sebelumnya tidak akan ditampilkan di halaman pengguna akun yang baru saja dibuat.
+
+###
+## TUGAS INDIVIDU 5
+
+### 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+**- ID Selector (#id):** Memilih elemen berdasarkan ID unik, memungkinkan pemberian gaya khusus pada elemen tertentu dalam dokumen
+**- Universal Selector (*):** Memilih semua elemen di dokumen untuk memberikan gaya secara global dan berdampak pada seluruh elemen
+**- Type Selector (element):** Mengidentifikasi dan memilih semua elemen dari jenis tertentu, seperti paragraf (p), untuk menerapkan gaya yang seragam pada elemen-elemen sejenis
+**- Class Selector (.class):** Menentukan dan memilih semua elemen yang memiliki kelas tertentu, memungkinkan penerapan gaya yang konsisten pada beberapa elemen tanpa memperhatikan jenis elemen
+**- Descendant Selector (ancestor descendant):** Memilih semua elemen yang merupakan turunan dari elemen tertentu, seperti anak atau cucu, berguna untuk membatasi pemilihan pada elemen yang berada dalam hierarki tertentu
+**- Child Selector (parent > child):** Memilih elemen anak langsung dari elemen induk tertentu, membatasi pemilihan hanya pada elemen anak yang langsung berada di bawah elemen induk
+**- Adjacent Sibling Selector (prev + next):** Memilih elemen sejajar yang berada setelah elemen tertentu, memungkinkan pemberian gaya pada elemen yang berdekatan secara langsung
+
+### 2.Jelaskan HTML5 Tag yang kamu ketahui.
+<article>: Memberikan penanda untuk konten yang berdiri sendiri sebagai artikel independen.
+<section>: Digunakan untuk mengumpulkan bersama konten yang terkait dalam suatu topik tertentu, membantu dalam mengorganisir halaman.
+<nav>: Menandakan area navigasi, seperti menu, mempermudah pengguna untuk berpindah antarhalaman atau bagian dalam situs.
+<header> dan <footer>: Memberi penanda pada bagian atas (header) dan bawah (footer) dari halaman atau bagian, memberikan struktur yang jelas pada dokumen.
+<aside>: Digunakan untuk konten yang terkait dengan konten di sekitarnya, seperti sidebar, menambahkan informasi tambahan atau terkait.
+<figure> dan <figcaption>: Diterapkan untuk menyertakan gambar dan keterangan gambar, membantu menyajikan informasi visual dengan lebih kontekstual.
+<main>: Menandai konten utama dalam sebuah dokumen, memberikan fokus pada isi utama halaman.
+<mark>: Digunakan untuk menyoroti atau menandai teks tertentu, menonjolkan bagian teks yang memiliki arti atau penting dalam konteks dokumen.
+
+### 3. Jelaskan perbedaan antara margin dan padding
+**Margin:**
+- menciptakan ruang kosong di luar elemen.
+- mengatur jarak antara elemen.
+- tidak memiliki warna atau background.
+- dapat memiliki nilai negatif -> elemen akan tumpang tindih dengan elemen lain
+
+**Padding:**
+- menciptakan ruang kosong di dalam elemen.
+- mengatur jarak antara konten dan tepi dalam elemen.
+- dapat memiliki warna atau background.
+- tidak dapat memiliki nilai negatif.
+
+### 4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+**Tailwind CSS:**
+1. **Utilitas Kustomisasi Tinggi:** Menyajikan kelas utilitas yang mencakup berbagai properti CSS, memberikan fleksibilitas maksimal bagi pengembang untuk menyesuaikan desain secara detail.
+2. **Kemampuan Kustomisasi Lebih Lanjut:** Memungkinkan pengembang membuat desain yang lebih kustom dan sesuai dengan kebutuhan proyek tanpa terbatas oleh komponen siap pakai.
+3. **Fleksibilitas yang Luas:** Menawarkan tingkat fleksibilitas tinggi dalam mengontrol gaya elemen sesuai preferensi pengembang.
+
+**Kapan Menggunakan Tailwind:**
+1. **Fleksibilitas Maksimal Dicari:** Saat ingin mencapai fleksibilitas maksimal dalam desain dan mengendalikan setiap detail secara spesifik.
+2. **Kebutuhan Desain yang Spesifik:** Jika proyek membutuhkan desain yang sangat spesifik yang sulit dicapai dengan menggunakan komponen siap pakai.
+
+**Bootstrap:**
+1. **Komponen UI Siap Pakai:** Menyediakan rangkaian komponen UI yang telah dipersiapkan, memudahkan pembangunan cepat tanpa perlu merancang elemen dari awal.
+2. **Struktur Terorganisir:** Menyuguhkan struktur terstruktur dan konsisten, menjadikan desain antar proyek memiliki gaya yang seragam.
+3. **Kemudahan Penggunaan:** Meminimalkan kebutuhan penulisan CSS khusus karena komponen sudah memiliki gaya yang telah ditentukan.
+
+**Kapan Menggunakan Bootstrap:**
+1. **Pembangunan Cepat Diperlukan:** Saat memerlukan pengembangan yang cepat dengan komponen yang siap pakai.
+2. **Konsistensi Antar Proyek Dibutuhkan:** Jika konsistensi antar proyek menjadi prioritas untuk mempertahankan tampilan yang serupa.
+3. **Pengurangan Penulisan CSS Khusus:** Jika tujuannya adalah meminimalkan penulisan CSS khusus dengan mengandalkan desain yang sudah ada.
+
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
