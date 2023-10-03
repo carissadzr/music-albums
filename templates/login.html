@@ -5,26 +5,29 @@
 {% endblock meta %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap">
+</head>
 
 <style>
     body {
-        font-family: 'Inconsolata', monospace;
+        font-family: 'Gabarito', serif;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100vh;
         margin: 0;
-        background-color: #f8f9fa;
+        background-color: #9BE8D8;
     }
 
     .login {
         text-align: center;
         width: 60%;
-        background-color: #B5838D;
+        background-color: #ffffff;
         padding: 20px;
-        border: 2px solid #B5838D;
+        border: 2px solid #F8FDCF;
         border-radius: 10px;
-        color: #FFFFFF;
+        color: #083e33;
         display: flex;
         flex-direction: column;
         align-items: center; /* Memastikan konten berada di tengah secara vertikal */
@@ -52,10 +55,10 @@
     }
 
     .login_btn {
-        background-color: #B5838D;
-        color: #FFFFFF;
+        background-color: #F8FDCF;
+        color: #083e33;
         padding: 10px;
-        border: 2px solid #FFFFFF;
+        border: 2px solid #083e33;
         border-radius: 5px;
         cursor: pointer;
         width: 100%;
@@ -64,20 +67,20 @@
     }
 
     .login_btn:hover {
-        background-color: #FFFFFF;
-        color: #B5838D;
+        background-color: #78C1F3;
+        color: #F8FDCF;
     }
 
     /* Gaya tambahan untuk Register Now */
     .register-link {
-        color: #FFFFFF;
+        color: #083e33;
         font-weight: bold;
         margin-top: 10px;
     }
 </style>
 
 <div class="login">
-    <h1>Login</h1>
+    <h1>Tune In!</h1>
     <form method="POST" action="">
         {% csrf_token %}
         <div class="form-group">

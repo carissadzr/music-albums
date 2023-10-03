@@ -5,16 +5,19 @@
 {% endblock meta %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap">
+</head>
 
 <style>
     body {
-        font-family: 'Inconsolata', monospace;
+        font-family: 'Gabarito', serif;
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100vh;
         margin: 0;
-        background-color: #f8f9fa;
+        background-color: #78C1F3;
     }
 
     .login {
@@ -22,9 +25,9 @@
         width: 60%;
         background-color: #FFFFFF;
         padding: 20px;
-        border: 2px solid #B5838D;
+        border: 2px solid #78C1F3;
         border-radius: 10px;
-        color: #B5838D;
+        color: #4e9dd2;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -49,11 +52,11 @@
         width: 100%;
         padding: 15px;
         box-sizing: border-box;
-        border: 1px solid #B5838D;
+        border: 1px solid #F8FDCF;
     }
 
     .login_btn {
-        background-color: #B5838D;
+        background-color: #9BE8D8;
         color: #FFFFFF;
         padding: 10px;
         border: 2px solid #FFFFFF;
@@ -61,6 +64,7 @@
         cursor: pointer;
         width: 100%;
         margin-top: 15px;
+        transition: background-color 0.3s, color 0.3s;
     }
 
     .password-requirements {
@@ -69,14 +73,15 @@
     }
 
     .register-link {
-        color: #B5838D;
+        color: #F8FDCF;
         font-weight: bold;
         margin-top: 10px;
+        transition: color 0.3s, background-color 0.3s; /* Transisi warna selama 0.3 detik */
     }
 
     .register-link:hover {
-        background-color: #FFFFFF;
-        color: #B5838D;
+        background-color: #F8FDCF;
+        color: #9BE8D8;
     }
 
 </style>

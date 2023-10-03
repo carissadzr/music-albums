@@ -1,116 +1,110 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap">
+    <style>
+        body {
+            font-family: 'Gabarito', serif;
+            background-color: #9BE8D8; 
+            color: #090202;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .user-info {
+            text-align: left;
+            font-size: 14px;
+            color: #F8FDCF;
+            margin-bottom: 10px;
+        }
+        .main-content {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .navbar {
+            margin: 0;
+        }
 
-    <nav class="navbar" style="background-color: #B5838D; color: #FFFFFF;">
-        <div class="container-fluid">
-        <a class="navbar-brand" style="color: #FFFFFF; font-size: 30px;">Music Albums</a>
+        .navbar form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar form input.form-control {
+            width: 350px; /* Atur lebar yang diinginkan */
+        }
+    </style>
+</head>
+
+<nav class="navbar" style="background-color: #78C1F3; color: #4ea1d3; text-align: center;">
+    <div class="container-fluid">
+        <div class="user-info">
+            <a class="navbar-brand" style="color: #Ffffff; font-size: 42px;">Music Albums</a>
+            <p>{{name}} - {{class}}</p>
+        </div>
 
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit" style="border-color: #FFFFFF; color: #FFFFFF;">Search</button>
+            <button class="btn btn-outline-success" type="submit" style="border-color: #edf5e1; color: #ffffff;">Search</button>
         </form>
 
         <style>
             button.btn-outline-success:hover {
-              background-color: #a97680;
-              color: #B5838D;
+                background-color: #a7afe9;
+                color: #6474e5;
             }
-          </style>
+        </style>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-            <a class="btn btn-outline-light" href="{% url 'main:logout' %}">Logout</a>
+                <a class="btn btn-outline-light" href="{% url 'main:logout' %}">Logout</a>
             </li>
         </ul>
-        </div>
-    </nav>
-    
+    </div>
+</nav>
 
-    <body style="font-family: 'Inconsolata', monospace; background-color: #F7F9F7; color: #B5838D;">
-    <style>
-        body {
-            background-color: #F7F9F7;
-        }
-    </style>
+<body class="main-content">
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
-
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-    
+    <div class="row row-cols-1 row-cols-md-3">
+        {% for product in products %}
+            <div class="col mb-4" style="margin-top: 100px;">
+                <div class="card" style="padding: 15px; background-color: #F8FDCF; color: #083e33;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size: 18px;">{{ product.name }}</h5>
+                        <p class="card-text" style="font-size: 14px;">Amount of Songs: {{ product.amount }}</p>
+                        <p class="card-text" style="font-size: 14px;">{{ product.description }}</p>
+                        
+                        <!-- Tombol Edit dan Delete -->
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'main:edit_product' product.pk %}" class="btn btn-primary">Edit</a>
+                            <form method="post" action="{% url 'main:delete_product' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
     <p style="text-align: center;">
         <b>
             You have saved {% if jumlah_item %}{{ jumlah_item }} albums{% endif %} in your collections!
         </b>
-    </p>  
-      
-    <th> </th>
-
-    <table>
-        <tr>
-            <th style="text-align: center;">Album</th>
-            <th> </th>
-            <th style="text-align: center;">Amount of Songs</th>
-            <th> </th>
-            <th style="text-align: center;">Description</th>
-        </tr>
-    
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    
-        {% for product in products %}
-            <tr>
-                <td>{{ product.name }}</td>
-                <td>
-                    <form method="post" action="{% url 'main:update_product_amount' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button type="submit" name="amount" value="reduce">-</button>
-                    </form>
-                </td>
-                <td style="text-align: center;">{{ product.amount }}</td>
-                <td>
-                    <form method="post" action="{% url 'main:update_product_amount' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button type="submit" name="amount" value="add">+</button>
-                    </form>
-                </td>
-                <td>{{ product.description }}</td>
-                <td>
-                    <a href="{% url 'main:edit_product' product.pk %}">
-                        <button>
-                            Edit
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <form method="post" action="{% url 'main:delete_product' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    
+    </p>
     <br />
-    
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Product
-        </button>
+
+    <a href="{% url 'main:create_product' %}" class="btn btn-primary" style="background-color: #F8FDCF; color: #1d1e14;">
+        Add New Product
     </a>
 
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
 
     <h5>Sesi terakhir login: {{ last_login }}</h5>
-    </body>
-    
-    {% endblock content %}
+</body>
+
+{% endblock content %}
