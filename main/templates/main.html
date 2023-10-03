@@ -2,27 +2,32 @@
 
 {% block content %}
 
-    <nav class="navbar" style="background-color: #B5838D;">
+    <nav class="navbar" style="background-color: #B5838D; color: #FFFFFF;">
         <div class="container-fluid">
-            <a class="navbar-brand" style="color: #FFFFFF;">Music Albums</a>
-            <ul class="navbar-nav mr-auto"> <!-- Menggunakan class 'mr-auto' untuk membuat elemen sejajar -->
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: #ffffff;">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-light" href="{% url 'main:logout' %}" style="color: #ffffff;">Logout</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+        <a class="navbar-brand" style="color: #FFFFFF; font-size: 30px;">Music Albums</a>
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" style="border-color: #FFFFFF; color: #FFFFFF;">Search</button>
+        </form>
+
+        <style>
+            button.btn-outline-success:hover {
+              background-color: #a97680;
+              color: #B5838D;
+            }
+          </style>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a class="btn btn-outline-light" href="{% url 'main:logout' %}">Logout</a>
+            </li>
+        </ul>
         </div>
     </nav>
+    
 
-  
-
-    <body style="font-family: 'Inconsolata', monospace; color: #B5838D;">
+    <body style="font-family: 'Inconsolata', monospace; background-color: #F7F9F7; color: #B5838D;">
     <style>
         body {
             background-color: #F7F9F7;
