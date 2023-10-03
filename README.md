@@ -426,15 +426,15 @@ Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan
 **- Child Selector (parent > child):** Memilih elemen anak langsung dari elemen induk tertentu, membatasi pemilihan hanya pada elemen anak yang langsung berada di bawah elemen induk
 **- Adjacent Sibling Selector (prev + next):** Memilih elemen sejajar yang berada setelah elemen tertentu, memungkinkan pemberian gaya pada elemen yang berdekatan secara langsung
 
-### 2.Jelaskan HTML5 Tag yang kamu ketahui.
-<article>: Memberikan penanda untuk konten yang berdiri sendiri sebagai artikel independen.
-<section>: Digunakan untuk mengumpulkan bersama konten yang terkait dalam suatu topik tertentu, membantu dalam mengorganisir halaman.
-<nav>: Menandakan area navigasi, seperti menu, mempermudah pengguna untuk berpindah antarhalaman atau bagian dalam situs.
-<header> dan <footer>: Memberi penanda pada bagian atas (header) dan bawah (footer) dari halaman atau bagian, memberikan struktur yang jelas pada dokumen.
-<aside>: Digunakan untuk konten yang terkait dengan konten di sekitarnya, seperti sidebar, menambahkan informasi tambahan atau terkait.
-<figure> dan <figcaption>: Diterapkan untuk menyertakan gambar dan keterangan gambar, membantu menyajikan informasi visual dengan lebih kontekstual.
-<main>: Menandai konten utama dalam sebuah dokumen, memberikan fokus pada isi utama halaman.
-<mark>: Digunakan untuk menyoroti atau menandai teks tertentu, menonjolkan bagian teks yang memiliki arti atau penting dalam konteks dokumen.
+### 2.Jelaskan HTML5 Tag yang kamu ketahui
+- article : Memberikan penanda untuk konten yang berdiri sendiri sebagai artikel independen.
+- section : Digunakan untuk mengumpulkan bersama konten yang terkait dalam suatu topik tertentu, membantu dalam mengorganisir halaman.
+- nav : Menandakan area navigasi, seperti menu, mempermudah pengguna untuk berpindah antarhalaman atau bagian dalam situs.
+- header dan footer: Memberi penanda pada bagian atas (header) dan bawah (footer) dari halaman atau bagian, memberikan struktur yang jelas pada dokumen.
+- aside : Digunakan untuk konten yang terkait dengan konten di sekitarnya, seperti sidebar, menambahkan informasi tambahan atau terkait.
+- figure dan figcaption: Diterapkan untuk menyertakan gambar dan keterangan gambar, membantu menyajikan informasi visual dengan lebih kontekstual.
+- main : Menandai konten utama dalam sebuah dokumen, memberikan fokus pada isi utama halaman.
+- mark : Digunakan untuk menyoroti atau menandai teks tertentu, menonjolkan bagian teks yang memiliki arti atau penting dalam konteks dokumen.
 
 ### 3. Jelaskan perbedaan antara margin dan padding
 **Margin:**
@@ -455,7 +455,7 @@ Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan
 2. **Kemampuan Kustomisasi Lebih Lanjut:** Memungkinkan pengembang membuat desain yang lebih kustom dan sesuai dengan kebutuhan proyek tanpa terbatas oleh komponen siap pakai.
 3. **Fleksibilitas yang Luas:** Menawarkan tingkat fleksibilitas tinggi dalam mengontrol gaya elemen sesuai preferensi pengembang.
 
-**Kapan Menggunakan Tailwind:**
+**Kapan Menggunakan Tailwind**
 1. **Fleksibilitas Maksimal Dicari:** Saat ingin mencapai fleksibilitas maksimal dalam desain dan mengendalikan setiap detail secara spesifik.
 2. **Kebutuhan Desain yang Spesifik:** Jika proyek membutuhkan desain yang sangat spesifik yang sulit dicapai dengan menggunakan komponen siap pakai.
 
@@ -464,7 +464,7 @@ Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan
 2. **Struktur Terorganisir:** Menyuguhkan struktur terstruktur dan konsisten, menjadikan desain antar proyek memiliki gaya yang seragam.
 3. **Kemudahan Penggunaan:** Meminimalkan kebutuhan penulisan CSS khusus karena komponen sudah memiliki gaya yang telah ditentukan.
 
-**Kapan Menggunakan Bootstrap:**
+**Kapan Menggunakan Bootstrap**
 1. **Pembangunan Cepat Diperlukan:** Saat memerlukan pengembangan yang cepat dengan komponen yang siap pakai.
 2. **Konsistensi Antar Proyek Dibutuhkan:** Jika konsistensi antar proyek menjadi prioritas untuk mempertahankan tampilan yang serupa.
 3. **Pengurangan Penulisan CSS Khusus:** Jika tujuannya adalah meminimalkan penulisan CSS khusus dengan mengandalkan desain yang sudah ada.
