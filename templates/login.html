@@ -6,28 +6,93 @@
 
 {% block content %}
 
-<div class = "login">
+<style>
+    body {
+        font-family: 'Inconsolata', monospace;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f8f9fa;
+    }
 
+    .login {
+        text-align: center;
+        width: 60%;
+        background-color: #B5838D;
+        padding: 20px;
+        border: 2px solid #B5838D;
+        border-radius: 10px;
+        color: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Memastikan konten berada di tengah secara vertikal */
+    }
+
+    .form-group {
+        width: 100%;
+        margin: 10px 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* Memastikan konten berada di tengah secara vertikal */
+        justify-content: center; /* Memastikan konten berada di tengah secara horizontal */
+    }
+
+    .form-label {
+        margin-right: 10px;
+        font-weight: bold; /* Membuat tulisan bold */
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .login_btn {
+        background-color: #B5838D;
+        color: #FFFFFF;
+        padding: 10px;
+        border: 2px solid #FFFFFF;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 15px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .login_btn:hover {
+        background-color: #FFFFFF;
+        color: #B5838D;
+    }
+
+    /* Gaya tambahan untuk Register Now */
+    .register-link {
+        color: #FFFFFF;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="login">
     <h1>Login</h1>
-
     <form method="POST" action="">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
+        <div class="form-group">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+        </div>
 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
+        <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+        </div>
+
+        <div style="width: 100%;">
+            <input class="btn login_btn" type="submit" value="Login">
+        </div>
     </form>
 
     {% if messages %}
@@ -38,8 +103,7 @@
         </ul>
     {% endif %}     
         
-    Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
-
+    <div class="register-link">Don't have an account yet? <a href="{% url 'main:register' %}" class="register-link">Register Now</a></div>
 </div>
 
 {% endblock content %}

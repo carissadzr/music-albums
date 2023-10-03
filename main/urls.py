@@ -4,6 +4,7 @@ from main.views import show_main, create_product, show_xml, show_json, show_xml_
 from main.views import register #sesuaikan dengan nama fungsi yang dibuat
 from main.views import login_user #sesuaikan dengan nama fungsi yang dibuat
 from main.views import logout_user
+from main.views import edit_product
 
 app_name = 'main'
 
@@ -21,5 +22,6 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('update_product_amount/', views.update_product_amount, name='update_product_amount'),
     path('delete_product/', views.delete_product, name='delete_product'),
+    path('edit-product/<int:id>', edit_product, name='edit_product'),
 ]
 

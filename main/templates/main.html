@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <body style="font-family: 'Croissant One', sans-serif; color: #B5838D;">
+
+    <nav class="navbar" style="background-color: #B5838D;">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: #FFFFFF;">Music Albums</a>
+            <ul class="navbar-nav mr-auto"> <!-- Menggunakan class 'mr-auto' untuk membuat elemen sejajar -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" style="color: #ffffff;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="{% url 'main:logout' %}" style="color: #ffffff;">Logout</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+  
+
+    <body style="font-family: 'Inconsolata', monospace; color: #B5838D;">
     <style>
         body {
             background-color: #F7F9F7;
         }
     </style>
-
-    <h1>Music Albums</h1>
 
     <h5>Name:</h5>
     <p>{{name}}</p>
@@ -26,11 +45,11 @@
 
     <table>
         <tr>
-            <th>Album</th>
+            <th style="text-align: center;">Album</th>
             <th> </th>
-            <th>Amount of Songs</th>
+            <th style="text-align: center;">Amount of Songs</th>
             <th> </th>
-            <th>Description</th>
+            <th style="text-align: center;">Description</th>
         </tr>
     
         {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
@@ -54,6 +73,13 @@
                     </form>
                 </td>
                 <td>{{ product.description }}</td>
+                <td>
+                    <a href="{% url 'main:edit_product' product.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                </td>
                 <td>
                     <form method="post" action="{% url 'main:delete_product' %}">
                         {% csrf_token %}

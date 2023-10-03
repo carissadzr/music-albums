@@ -426,7 +426,7 @@ Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan
 **- Child Selector (parent > child):** Memilih elemen anak langsung dari elemen induk tertentu, membatasi pemilihan hanya pada elemen anak yang langsung berada di bawah elemen induk
 **- Adjacent Sibling Selector (prev + next):** Memilih elemen sejajar yang berada setelah elemen tertentu, memungkinkan pemberian gaya pada elemen yang berdekatan secara langsung
 
-### 2.Jelaskan HTML5 Tag yang kamu ketahui
+### 2. Jelaskan HTML5 Tag yang kamu ketahui
 - article : Memberikan penanda untuk konten yang berdiri sendiri sebagai artikel independen.
 - section : Digunakan untuk mengumpulkan bersama konten yang terkait dalam suatu topik tertentu, membantu dalam mengorganisir halaman.
 - nav : Menandakan area navigasi, seperti menu, mempermudah pengguna untuk berpindah antarhalaman atau bagian dalam situs.
@@ -451,23 +451,27 @@ Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan
 
 ### 4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
 **Tailwind CSS:**
-1. **Utilitas Kustomisasi Tinggi:** Menyajikan kelas utilitas yang mencakup berbagai properti CSS, memberikan fleksibilitas maksimal bagi pengembang untuk menyesuaikan desain secara detail.
-2. **Kemampuan Kustomisasi Lebih Lanjut:** Memungkinkan pengembang membuat desain yang lebih kustom dan sesuai dengan kebutuhan proyek tanpa terbatas oleh komponen siap pakai.
-3. **Fleksibilitas yang Luas:** Menawarkan tingkat fleksibilitas tinggi dalam mengontrol gaya elemen sesuai preferensi pengembang.
+1. Menyajikan kelas utilitas yang mencakup berbagai properti CSS, memberikan fleksibilitas maksimal bagi pengembang untuk menyesuaikan desain secara detail.
+2. Memungkinkan pengembang membuat desain yang lebih kustom dan sesuai dengan kebutuhan proyek tanpa terbatas oleh komponen siap pakai.
+3.  Menawarkan tingkat fleksibilitas tinggi dalam mengontrol gaya elemen sesuai preferensi pengembang.
+4. Tailwind CSS memiliki file CSS yang lebih ringan dibandingkan dengan Bootstrap, hanya memuat kelas-kelas utilitas yang digunakan.
+5. Tailwind CSS mengonstruksi antarmuka dengan menggabungkan kelas-kelas utilitas yang telah ditetapkan sebelumnya.
 
 **Kapan Menggunakan Tailwind**
-1. **Fleksibilitas Maksimal Dicari:** Saat ingin mencapai fleksibilitas maksimal dalam desain dan mengendalikan setiap detail secara spesifik.
-2. **Kebutuhan Desain yang Spesifik:** Jika proyek membutuhkan desain yang sangat spesifik yang sulit dicapai dengan menggunakan komponen siap pakai.
+1. Saat ingin mencapai fleksibilitas maksimal dalam desain dan mengendalikan setiap detail secara spesifik.
+2. Jika proyek membutuhkan desain yang sangat spesifik yang sulit dicapai dengan menggunakan komponen siap pakai.
 
 **Bootstrap:**
-1. **Komponen UI Siap Pakai:** Menyediakan rangkaian komponen UI yang telah dipersiapkan, memudahkan pembangunan cepat tanpa perlu merancang elemen dari awal.
-2. **Struktur Terorganisir:** Menyuguhkan struktur terstruktur dan konsisten, menjadikan desain antar proyek memiliki gaya yang seragam.
-3. **Kemudahan Penggunaan:** Meminimalkan kebutuhan penulisan CSS khusus karena komponen sudah memiliki gaya yang telah ditentukan.
+1. Menyediakan rangkaian komponen UI yang telah dipersiapkan, memudahkan pembangunan cepat tanpa perlu merancang elemen dari awal.
+2. Menyuguhkan struktur terstruktur dan konsisten, menjadikan desain antar proyek memiliki gaya yang seragam.
+3. Meminimalkan kebutuhan penulisan CSS khusus karena komponen sudah memiliki gaya yang telah ditentukan.
+4. Bootstrap memiliki file CSS yang lebih besar dibandingkan dengan Tailwind CSS karena mencakup banyak komponen yang sudah ditetapkan.
+5. Untuk pemula, Bootstrap menawarkan pembelajaran yang lebih cepat karena dapat memulai dengan menggunakan komponen yang sudah ditetapkan.
 
 **Kapan Menggunakan Bootstrap**
-1. **Pembangunan Cepat Diperlukan:** Saat memerlukan pengembangan yang cepat dengan komponen yang siap pakai.
-2. **Konsistensi Antar Proyek Dibutuhkan:** Jika konsistensi antar proyek menjadi prioritas untuk mempertahankan tampilan yang serupa.
-3. **Pengurangan Penulisan CSS Khusus:** Jika tujuannya adalah meminimalkan penulisan CSS khusus dengan mengandalkan desain yang sudah ada.
+1. Saat memerlukan pengembangan yang cepat dengan komponen yang siap pakai.
+2. Jika konsistensi antar proyek menjadi prioritas untuk mempertahankan tampilan yang serupa.
+3. Jika tujuannya adalah meminimalkan penulisan CSS khusus dengan mengandalkan desain yang sudah ada.
 
 
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
