@@ -418,13 +418,13 @@ Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan
 ## TUGAS INDIVIDU 5
 
 ### 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
-**- ID Selector (#id):** Memilih elemen berdasarkan ID unik, memungkinkan pemberian gaya khusus pada elemen tertentu dalam dokumen
-**- Universal Selector (*):** Memilih semua elemen di dokumen untuk memberikan gaya secara global dan berdampak pada seluruh elemen
-**- Type Selector (element):** Mengidentifikasi dan memilih semua elemen dari jenis tertentu, seperti paragraf (p), untuk menerapkan gaya yang seragam pada elemen-elemen sejenis
-**- Class Selector (.class):** Menentukan dan memilih semua elemen yang memiliki kelas tertentu, memungkinkan penerapan gaya yang konsisten pada beberapa elemen tanpa memperhatikan jenis elemen
-**- Descendant Selector (ancestor descendant):** Memilih semua elemen yang merupakan turunan dari elemen tertentu, seperti anak atau cucu, berguna untuk membatasi pemilihan pada elemen yang berada dalam hierarki tertentu
-**- Child Selector (parent > child):** Memilih elemen anak langsung dari elemen induk tertentu, membatasi pemilihan hanya pada elemen anak yang langsung berada di bawah elemen induk
-**- Adjacent Sibling Selector (prev + next):** Memilih elemen sejajar yang berada setelah elemen tertentu, memungkinkan pemberian gaya pada elemen yang berdekatan secara langsung
+- **ID Selector (#id):** Memilih elemen berdasarkan ID unik, memungkinkan pemberian gaya khusus pada elemen tertentu dalam dokumen
+- **Universal Selector (*):** Memilih semua elemen di dokumen untuk memberikan gaya secara global dan berdampak pada seluruh elemen
+- **Type Selector (element):** Mengidentifikasi dan memilih semua elemen dari jenis tertentu, seperti paragraf (p), untuk menerapkan gaya yang seragam pada elemen-elemen sejenis
+- **Class Selector (.class):** Menentukan dan memilih semua elemen yang memiliki kelas tertentu, memungkinkan penerapan gaya yang konsisten pada beberapa elemen tanpa memperhatikan jenis elemen
+- **Descendant Selector (ancestor descendant):** Memilih semua elemen yang merupakan turunan dari elemen tertentu, seperti anak atau cucu, berguna untuk membatasi pemilihan pada elemen yang berada dalam hierarki tertentu
+- **Child Selector (parent > child):** Memilih elemen anak langsung dari elemen induk tertentu, membatasi pemilihan hanya pada elemen anak yang langsung berada di bawah elemen induk
+- **Adjacent Sibling Selector (prev + next):** Memilih elemen sejajar yang berada setelah elemen tertentu, memungkinkan pemberian gaya pada elemen yang berdekatan secara langsung
 
 ### 2. Jelaskan HTML5 Tag yang kamu ketahui
 - article : Memberikan penanda untuk konten yang berdiri sendiri sebagai artikel independen.
