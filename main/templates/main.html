@@ -17,24 +17,11 @@
             margin-bottom: 10px;
         }
         .main-content {
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 0px;
+            padding-right: 0px;
         }
-        .navbar {
-            margin: 0;
-            justify-content: space-between;
-        }
-
-        .navbar form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .navbar form input.form-control {
-            width: 350px; /* Atur lebar yang diinginkan */
-        }
-
+        
+        
         
     </style>
 </head>
@@ -68,9 +55,9 @@
 
 <body class="main-content">
 
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-md-3" style="margin-left: 20px; margin-right: 20px;">
         {% for product in products %}
-            <div class="col mb-4" style="margin-top: 100px;">
+            <div class="col mb-4" style="margin-top: 50px;">
                 <div class="card" style="padding: 15px; background-color: #F8FDCF; color: #083e33;">
                     <div class="card-body">
                         <h5 class="card-title" style="font-size: 18px;">{{ product.name }}</h5>
@@ -92,7 +79,7 @@
             </div>
         {% endfor %}
     </div>
-    <p style="text-align: center;">
+    <p style="text-align: center; color: #083e33;">
         <b>
             You have saved {% if jumlah_item %}{{ jumlah_item }} albums{% endif %} in your collections!
         </b>
