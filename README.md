@@ -475,3 +475,217 @@ Jalankan `python manage.py migrate` untuk mengaplikasikan migrasi yang dilakukan
 
 
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+### Menambahkan Bootstrap ke Aplikasi
+
+Pertama, buka proyek Django, dalam hal ini saya menggunakan `music_albums`, akses file `base.html` yang sudah ada di dalam folder "templates" di direktori proyek utama. Pada file `templates/base.html`, tambahkan elemen tag `<meta name="viewport">` untuk memastikan halaman web dapat menyesuaikan ukuran dan responsif terhadap perangkat mobile jika belum dilakukan sebelumnya.
+
+```
+<head>
+    {% block meta %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock meta %}
+</head>
+```
+
+Lalu, tambahkan Bootstrap CSS dan JS sebagai berikut :
+
+**CSS**
+```
+<head>
+    {% block meta %}
+        ...
+    {% endblock meta %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+```
+
+**JS**
+```
+<head>
+    ...
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+</head>
+```
+
+Karena saya berniat menggunakan dropdowns, popover, atau tooltips dari framework Bootstrap, maka saya menambahkan dua baris skrip JavaScript di bawah skrip JavaScript sebagai berikut.
+
+```
+<head>
+    ...
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
+```
+
+### Tutorial: Menambahkan navbar pada Aplikasi
+
+Untuk menambahkan navbar pada aplikasi web, saya meambahkan navigation bar (Bootstrap) pada halaman `main.html` dengan bentuk berikut.
+
+```
+<nav class="navbar" style="background-color: #78C1F3; color: #4ea1d3; text-align: center;">
+    <div class="container-fluid">
+        <div class="user-info">
+            <a class="navbar-brand" style="color: #Ffffff; font-size: 42px;">Music Albums</a>
+            <p>{{name}} - {{class}}</p>
+        </div>
+
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" style="border-color: #edf5e1; color: #ffffff;">Search</button>
+        </form>
+
+        <style>
+            button.btn-outline-success:hover {
+                background-color: #a7afe9;
+                color: #6474e5;
+            }
+        </style>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn btn-outline-light" href="{% url 'main:logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+```
+
+### Tutorial: Menambahkan Fitur Edit pada Aplikasi
+
+Untuk menambahkan fitur ini, buka berkas `views.py` yang terletak dalam subdirektori `main` dan membuat sebuah fungsi baru yang dinamai `edit_product` yang menerima parameter request dan id. Lalu, tambahkan bagian kode berikut ke dalam fungsi edit_product.
+
+```
+def edit_product(request, id):
+    # Get product berdasarkan ID
+    product = Product.objects.get(pk = id)
+
+    # Set product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+```
+
+Kemudian, buat berkas HTML baru dengan nama `edit_product.html` pada subdirektori `main/templates` lalu mengisi berkas tersebut dengan potongan kode berikut
+
+```
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Edit Product</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Edit Product"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
+```
+
+Buka urls.py yang berada pada direktori `main` dan import fungsi `edit_product` yang sudah dibuat.
+
+```
+from main.views import edit_product
+
+```
+
+Tambahkan path url ke dalam urlpatterns untuk mengakses fungsi yang sudah diimpor tadi.
+
+```
+...
+path('edit-product/<int:id>', edit_product, name='edit_product'),
+...
+
+```
+
+Buka main.html yang berada pada subdirektori main/templates. Tambahkan potongan kode berikut sejajar dengan elemen `<td>` terakhir agar terlihat tombol edit pada setiap baris tabel.
+
+```
+...
+<tr>
+    ...
+    <td>
+        <a href="{% url 'main:edit_product' product.pk %}">
+            <button>
+                Edit
+            </button>
+        </a>
+    </td>
+</tr>
+...
+
+```
+
+Kemudian jalankan proyek Django dengan perintah `python manage.py runserver`` dan bukalah http://localhost:8000 di browser untuk melihat hasilnya.
+
+### Membuat Fungsi untuk Menghapus Data Produk
+
+Untuk menambahkan fitur ini, buat fungsi baru dengan nama `delete_product` yang menerima parameter request dan id pada `views.py` di folder `main` 
+
+```
+def delete_product(request, id):
+    # Get data berdasarkan ID
+    product = Product.objects.get(pk = id)
+    # Hapus data
+    product.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
+```
+
+Kemudian, buka `urls.py` yang ada pada folder `main` dan impor fungsi `delete_product`
+
+```
+from main.views import delete_product
+```
+
+
+Lalu saya akan menambahkan path url ke dalam `urlpatterns` untuk mengakses fungsi yang sudah diimport
+
+```
+...
+path('delete/<int:id>', delete_product, name='delete_product'), # sesuaikan dengan nama fungsi yang dibuat
+...
+
+```
+
+Buka file `main.html` yang terdapat di direktori  `main/templates` dan modifikasi kode yang sudah ada agar setiap produk memiliki tombol delete
+
+```
+...
+<tr>
+    ...
+    <td>
+        <a href="{% url 'main:edit_product' product.pk %}">
+            <button>
+                Edit
+            </button>
+        </a>
+        <a href="{% url 'main:delete_product' product.pk %}">
+              <button>
+                  Delete
+              </button>
+          </a>
+    </td>
+</tr>
+...
+```
+
+Kemudian jalankan kembali proyek Django dengan perintah `python manage.py runserver`` dan bukalah http://localhost:8000 di browser untuk melihat hasilnya.
