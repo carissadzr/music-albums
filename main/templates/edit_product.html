@@ -8,8 +8,8 @@
     <style>
         body {
             font-family: 'Gabarito', serif;
-            background-color: #f0f8e5;
-            color: #090202;
+            background-color: #fbf8ee; /* Updated background color */
+            color: #a32451; /* Updated text color */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -21,6 +21,38 @@
             font-family: 'Gabarito', serif;
             margin-top: 20px;
             text-align: center;
+            width: 60%; /* Updated form width */
+            background-color: #fbf8ee; /* Updated form background color */
+            padding: 20px;
+            color: #070a05; /* Updated form text color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards, slideIn 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
         }
 
         table {
@@ -32,15 +64,15 @@
 
         th, td {
             padding: 10px;
-            border: 1px solid #dddddd;
+            border: 1px solid #a32451; /* Updated table border color */
             text-align: left;
         }
 
         input[type="submit"] {
-            background-color: #9BE8D8;
-            color: #083e33;
+            background-color: #070a05; /* Updated button background color */
+            color: #fbf8ee; /* Updated button text color */
             padding: 10px;
-            border: 2px solid #083e33;
+            border: 2px solid #fbf8ee; /* Updated button border color */
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
@@ -49,24 +81,25 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #083e33;
-            color: #F8FDCF;
+            background-color: #1d3269; /* Updated hover background color */
+            color: #fbf8ee; /* Updated hover text color */
         }
     </style>
 </head>
 
-<h1>Edit Product</h1>
-
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Edit Product"/>
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="login">
+    <h1>Edit Product</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Edit Product"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 {% endblock %}

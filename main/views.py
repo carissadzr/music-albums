@@ -144,3 +144,4 @@ def edit_product(request, id):
 
     context = {'form': form}
     return render(request, "edit_product.html", context)
+

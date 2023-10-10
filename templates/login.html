@@ -17,83 +17,159 @@
         justify-content: center;
         height: 100vh;
         margin: 0;
-        background-color: #9BE8D8;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .animated-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #a32451, #5c0f27);
+        z-index: -1;
+        animation: gradientAnimation 10s infinite linear;
     }
 
     .login {
         text-align: center;
-        width: 50%;
-        height: 80%;
-        background-color: #ffffff;
-        padding: 20px;
-        border: 2px solid #F8FDCF;
+        width: 30%;
+        height: auto;
+        background-color: #fbf8ee;
+        padding: 40px;
+        border: 2px solid #eacea1;
         border-radius: 10px;
-        color: #083e33;
+        color: #070a05;
         display: flex;
-        align-items: center; /* Memastikan konten berada di tengah secara vertikal */
-        justify-content: center; 
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
-        align-items: center; /* Memastikan konten berada di tengah secara vertikal */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s forwards, slideIn 1s forwards;
+        position: relative;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: scale(0.8);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 0% 100%;
+        }
     }
 
     .form-group {
         width: 100%;
-        margin: 10px 0;
+        margin: 20px 0;
         box-sizing: border-box;
         display: flex;
-        flex-direction: row;
-        align-items: center; /* Memastikan konten berada di tengah secara vertikal */
-        justify-content: center; /* Memastikan konten berada di tengah secara horizontal */
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
 
     .form-label {
-        margin-right: 10px;
-        font-weight: bold; /* Membuat tulisan bold */
+        font-weight: bold;
+        color: #a32451;
+        margin-bottom: 5px;
+        text-align: left;
+        transition: color 0.3s;
     }
 
     .form-control {
         width: 100%;
         padding: 15px;
         box-sizing: border-box;
+        border: 1px solid #a32451;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        transition: border-color 0.3s;
+        font-size: 16px;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #1d3269;
     }
 
     .login_btn {
-        background-color: #F8FDCF;
-        color: #083e33;
-        padding: 10px;
-        border: 2px solid #083e33;
+        background-color: #070a05;
+        color: #fbf8ee;
+        padding: 12px;
+        border: none;
         border-radius: 5px;
         cursor: pointer;
         width: 100%;
-        margin-top: 15px;
         transition: background-color 0.3s, color 0.3s;
+        font-size: 18px;
     }
 
     .login_btn:hover {
-        background-color: #78C1F3;
-        color: #F8FDCF;
+        background-color: #1d3269;
     }
 
-    /* Gaya tambahan untuk Register Now */
     .register-link {
-        color: #083e33;
+        color: #070a05;
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 15px;
+        transition: color 0.3s;
+        font-size: 16px;
+    }
+
+    .register-link:hover {
+        color: #1d3269;
+    }
+
+    h1 {
+        color: #a32451;
+        margin-bottom: 20px;
+        font-size: 36px; /* Increased font size and added bold style */
+        font-weight: bold;
+    }
+
+    .error-message {
+        color: #eacea1;
+        margin-top: 15px;
+        font-size: 14px;
     }
 </style>
 
+<div class="animated-background"></div>
 <div class="login">
     <h1>Tune In!</h1>
     <form method="POST" action="">
         {% csrf_token %}
         <div class="form-group">
             <label for="username" class="form-label">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+            <input type="text" id="username" name="username" placeholder="Enter your username" class="form-control">
         </div>
 
         <div class="form-group">
             <label for="password" class="form-label">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+            <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control">
         </div>
 
         <div style="width: 100%;">
@@ -102,11 +178,13 @@
     </form>
 
     {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+        <div class="error-message">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endif %}     
         
     <div class="register-link">Don't have an account yet? <a href="{% url 'main:register' %}" class="register-link">Register Now</a></div>

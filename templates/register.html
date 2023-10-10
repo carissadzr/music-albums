@@ -17,20 +17,67 @@
         justify-content: center;
         height: 100vh;
         margin: 0;
-        background-color: #78C1F3;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(to bottom, #a32451, #5c0f27);
+    }
+
+    .animated-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #a32451, #5c0f27);
+        z-index: -1;
+        animation: gradientAnimation 10s infinite linear;
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 0% 100%;
+        }
     }
 
     .login {
         text-align: center;
         width: 60%;
-        background-color: #FFFFFF;
+        background-color: #fbf8ee;
         padding: 20px;
-        border: 2px solid #78C1F3;
+        border: 2px solid #f5f5f5;
         border-radius: 10px;
-        color: #4e9dd2;
+        color: #a32451;
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s forwards, slideIn 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: scale(0.8);
+        }
+        to {
+            transform: scale(1);
+        }
     }
 
     .form-group {
@@ -46,48 +93,66 @@
     .form-label {
         margin-right: 10px;
         font-weight: bold;
+        color: #a32451;
     }
 
     .form-control {
         width: 100%;
         padding: 15px;
         box-sizing: border-box;
-        border: 1px solid #F8FDCF;
+        border: 1px solid #f8fdfc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        transition: border-color 0.3s;
+        font-size: 16px;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #1d3269;
     }
 
     .login_btn {
-        background-color: #9BE8D8;
-        color: #FFFFFF;
+        background-color: #a32451;
+        color: #f8fdfc;
         padding: 10px;
-        border: 2px solid #FFFFFF;
+        border: 2px solid #f8fdfc;
         border-radius: 5px;
         cursor: pointer;
         width: 100%;
         margin-top: 15px;
         transition: background-color 0.3s, color 0.3s;
+        font-size: 18px;
+    }
+
+    .login_btn:hover {
+        background-color: #5c0f27;
+        color: #f8fdfc;
     }
 
     .password-requirements {
         text-align: left;
         margin-top: 10px;
+        color: #a32451;
     }
 
     .register-link {
-        color: #F8FDCF;
+        color: #a32451;
         font-weight: bold;
         margin-top: 10px;
-        transition: color 0.3s, background-color 0.3s; /* Transisi warna selama 0.3 detik */
+        transition: color 0.3s, background-color 0.3s;
+        font-size: 16px;
     }
 
     .register-link:hover {
-        background-color: #F8FDCF;
-        color: #9BE8D8;
+        background-color: #f8fdfc;
+        color: #5c0f27;
     }
-
 </style>
 
+<div class="animated-background"></div>
 <div class="login">
-    <h1>Register</h1>
+    <h1 style="color: #a32451;">Register</h1>
     <form method="POST" >
         {% csrf_token %}
         <div class="form-group">
@@ -100,15 +165,13 @@
             {{ form.password1 }}
         </div>
 
-
         <div class="password-requirements">
-            <!-- <p>Password harus memenuhi ketentuan berikut:</p> -->
             <ul>
-                <li>Minimal 8 karakter</li>
-                <li>Setidaknya satu huruf besar (uppercase)</li>
-                <li>Setidaknya satu huruf kecil (lowercase)</li>
-                <li>Setidaknya satu angka</li>
-                <li>Setidaknya satu karakter khusus</li>
+                <li>Minimum 8 characters</li>
+                <li>At least one uppercase letter</li>
+                <li>At least one lowercase letter</li>
+                <li>At least one number</li>
+                <li>At least one special character</li>
             </ul>
         </div>
 

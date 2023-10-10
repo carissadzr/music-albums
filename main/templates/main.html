@@ -6,45 +6,66 @@
     <style>
         body {
             font-family: 'Gabarito', serif;
-            background-color: #9BE8D8; 
-            color: #090202;
-            padding : 0px;
+            margin: 0;
+            background: #fbf8ee; /* Main background color */
         }
-        .user-info {
-            text-align: left;
-            font-size: 14px;
-            color: #F8FDCF;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
+
         .main-content {
-            padding-left: 0px;
-            padding-right: 0px;
+            color: #070a05; /* Text color */
+            transition: background 0.5s;
         }
-        
-        
-        
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            background-color: #f5f5f5; /* Updated card background color to a brighter shade */
+            color: #070a05;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar {
+            background-color: #a32451;
+            color: #fbf8ee;
+            text-align: center;
+            padding: 10px;
+            transition: background 0.5s;
+        }
+
+        button.btn-outline-success {
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #070a05;
+            color: #fbf8ee;
+        }
+
+        button.btn-outline-success:hover {
+            background-color: #eacea1;
+        }
     </style>
 </head>
 
-<nav class="navbar" style="background-color: #78C1F3; color: #4ea1d3; text-align: center;">
+<script>
+    window.addEventListener("scroll", function() {
+        var scrollPosition = window.scrollY;
+        document.querySelector(".main-content").style.background = "#fbf8ee";
+        document.querySelector(".navbar").style.background = "#a32451";
+    });
+</script>
+
+<nav class="navbar">
     <div class="container-fluid">
         <div class="user-info">
-            <a class="navbar-brand" style="color: #Ffffff; font-size: 42px;">Music Albums</a>
+            <a class="navbar-brand" style="color: #fbf8ee; font-size: 28px;">Music Albums</a>
             <p>{{name}} - {{class}}</p>
         </div>
 
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit" style="border-color: #edf5e1; color: #ffffff;">Search</button>
+            <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-
-        <style>
-            button.btn-outline-success:hover {
-                background-color: #a7afe9;
-                color: #6474e5;
-            }
-        </style>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -58,13 +79,13 @@
 
     <div class="row row-cols-1 row-cols-md-3" style="margin-left: 20px; margin-right: 20px;">
         {% for product in products %}
-            <div class="col mb-4" style="margin-top: 50px;">
-                <div class="card" style="padding: 15px; background-color: #F8FDCF; color: #083e33;">
+            <div class="col mb-4" style="margin-top: 20px;">
+                <div class="card" style="padding: 15px;">
                     <div class="card-body">
                         <h5 class="card-title" style="font-size: 18px;">{{ product.name }}</h5>
                         <p class="card-text" style="font-size: 14px;">Amount of Songs: {{ product.amount }}</p>
                         <p class="card-text" style="font-size: 14px;">{{ product.description }}</p>
-                        
+
                         <!-- Tombol Edit dan Delete -->
                         <div class="d-flex justify-content-between">
                             <a href="{% url 'main:edit_product' product.pk %}" class="btn btn-primary">Edit</a>
@@ -74,25 +95,24 @@
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
-    <p style="text-align: center; color: #083e33;">
+    <p style="text-align: center;">
         <b>
             You have saved {% if jumlah_item %}{{ jumlah_item }} albums{% endif %} in your collections!
         </b>
     </p>
     <br />
 
-    <a href="{% url 'main:create_product' %}" class="btn btn-primary" style="margin-left: 20px; margin-bottom : 20px; background-color: #F8FDCF; color: #1d1e14;">
+    <a href="{% url 'main:create_product' %}" class="btn btn-primary" style="margin-left: 20px; margin-bottom : 20px; background-color: #eacea1; color: #070a05;">
         Add New Album
     </a>
 
-
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+    <h5 style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
 </body>
 
 {% endblock content %}
