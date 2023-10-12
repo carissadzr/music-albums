@@ -759,5 +759,53 @@ html
 Pada contoh ini, fungsi yang ditetapkan akan dijalankan ketika tombol dengan ID "myButton" diklik. Fungsi tersebut melakukan AJAX request ke server (contoh URL "example.php") dan menanggapi hasilnya dengan memperbarui elemen dengan ID "output". Ini adalah contoh konkret dari paradigma event-driven programming di dalam konteks JavaScript dan AJAX.
 
 ### 3. Jelaskan penerapan asynchronous programming pada AJAX.
-### 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+Asynchronous programming pada AJAX memungkinkan pengguna untuk berinteraksi dengan halaman web secara dinamis tanpa perlu memuat ulang seluruh halaman. Ini berarti bahwa kode JavaScript dapat mengirim permintaan ke server dan menerima respons tanpa mengganggu pengalaman pengguna.
+
+Berikut adalah cara kerja AJAX secara asynchronous:
+
+1. **Membuat objek XMLHttpRequest**: Objek ini digunakan untuk berkomunikasi dengan server.
+
+2. **Mengirim permintaan ke server**: Dengan menggunakan metode `open()` dan `send()` dari objek XMLHttpRequest, kita dapat mengirim permintaan ke server. Metode `open()` digunakan untuk menentukan jenis permintaan (GET, POST, dll.), URL tujuan, dan apakah permintaan harus asynchronous atau tidak. Metode `send()` digunakan untuk mengirim permintaan.
+
+3. **Menangani respons dari server**: Kita dapat menentukan fungsi callback yang akan dipanggil ketika respons diterima dari server. Fungsi ini akan dipanggil setiap kali properti `readyState` dari objek XMLHttpRequest berubah. Ketika `readyState` bernilai 4, itu berarti respons telah diterima dan siap untuk diproses.
+
+4. **Memproses respons**: Setelah respons diterima, kita dapat memproses data yang dikembalikan oleh server dan memperbarui halaman web sesuai kebutuhan.
+
+Berikut adalah contoh kode AJAX asynchronous:
+
+```
+javascript
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.example.com/data", true);
+xhr.onreadystatechange = function () {
+  if (xhr.readyState == 4 && xhr.status == 200)
+    console.log(JSON.parse(xhr.responseText));
+}
+xhr.send();
+```
+
+Dalam contoh ini, kita membuat permintaan GET ke "https://api.example.com/data" secara asynchronous. Ketika respons diterima (yaitu, `readyState` adalah 4 dan `status` adalah 200), kita mencetak respons ke konsol. Dengan pendekatan ini, kita dapat membuat aplikasi web yang responsif dan cepat, karena kita tidak perlu menunggu server merespons sebelum kita dapat melanjutkan dengan tugas lain.
+
+### 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan
+
+Fetch API dan jQuery AJAX adalah dua teknologi yang digunakan untuk membuat permintaan HTTP asynchronous dalam pengembangan web. 
+
+**Fetch API** adalah teknologi modern yang dibangun ke dalam JavaScript ES6 dan merupakan bagian dari spesifikasi browser web standar.
+(+) FMenggunakan Promises yang membuat penanganan respons asynchronous lebih mudah dan lebih intuitif.
+(+) Memberikan kontrol lebih besar atas permintaan HTTP, seperti mendukung operasi baca/tulis pada objek Request dan Response.
+(+) Mendukung service workers, yang penting untuk fitur offline dan push notifications.
+
+(-) Fetch API belum didukung oleh semua browser (meskipun sudah didukung oleh sebagian besar browser modern).
+(-)  Fetch API tidak secara otomatis mengirim atau menerima cookies, harus diatur secara manual.
+
+**jQuery** AJAX adalah bagian dari library jQuery yang telah ada sejak lama dan telah terbukti stabil dan dapat diandalkan.
+(+) jQuery AJAX memiliki dukungan browser yang luas, termasuk browser lama.
+(+) jQuery AJAX secara otomatis mengirim dan menerima cookies.
+(+) Jika Anda sudah menggunakan jQuery di situs Anda, menggunakan jQuery AJAX tidak memerlukan dependensi tambahan.
+
+(-) jQuery AJAX didasarkan pada callback, yang bisa menjadi rumit untuk dikelola jika Anda memiliki banyak operasi asynchronous.
+(-) Jika Anda tidak menggunakan fitur lain dari jQuery, memuat seluruh library hanya untuk AJAX bisa menjadi pemborosan.
+
+Untuk mengembangkan aplikasi modern dengan banyak fitur asynchronous dan/atau offline, Fetch API mungkin pilihan yang lebih baik. Namun, jika pada situs yang perlu mendukung berbagai macam browser (termasuk browser lama) atau jika Anda sudah menggunakan jQuery, maka jQuery AJAX mungkin pilihan yang lebih baik.
+
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
