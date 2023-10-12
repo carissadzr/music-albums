@@ -163,5 +163,10 @@ def add_product_ajax(request):
 
         # Tambahkan produk baru
         product = Product.objects.create(name=name, amount=amount, description=description, user=request.user)
-        return JsonResponse({"success": True, "message": "Product added successfully"})
+
+        # Hitung jumlah item setelah penambahan
+        jumlah_item = Product.objects.count()
+
+        return JsonResponse({'success': True, 'message': 'Product added successfully', 'jumlah_item': jumlah_item})
+    
     return JsonResponse({"success": False, "message": "Invalid request method"})

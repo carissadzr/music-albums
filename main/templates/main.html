@@ -129,6 +129,13 @@
                         <p class="card-text" style="font-size: 14px;">Amount of Songs: ${item.fields.amount}</p>
                         <p class="card-text" style="font-size: 14px;">${item.fields.description}</p>
 
+                        <div class="card-actions">
+                            <span>
+                            <a href='edit-product/${item.pk}' class="btn btn-light" style="background-color: #a32451; color: #fbf8ee;">
+                                <i class="fa-regular fa-pen-to-square"></i> Edit
+                            </a>
+                        </div>
+
                         {% for item in items %}
                             <a href="{% url 'main:edit_product' id=item.pk %}">Edit</a>
                             <form method="post" action="{% url 'main:delete_product' id=item.pk %}">
@@ -146,14 +153,21 @@
     }
 
     function addProduct() {
-        fetch("{% url 'main:add_product_ajax' %}", {
-            method: "POST",
-            body: new FormData(document.querySelector('#form'))
-        }).then(refreshProducts);
+    fetch("{% url 'main:add_product_ajax' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#form'))
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            refreshProducts();
+            document.getElementById("jumlahItem").innerText = data.jumlah_item;
+        }
+    });
 
-        document.getElementById("form").reset();
-        return false;
-    }
+    document.getElementById("form").reset();
+    return false;
+}
 
     document.getElementById("button_add").onclick = addProduct;
 
@@ -161,19 +175,14 @@
     document.addEventListener("DOMContentLoaded", function () {
         refreshProducts();
     });
+
 </script>
 
 <!-- Add New Album Button -->
 <button type="button" class="btn btn-primary" style="margin-left: 20px; background-color: #a32451;" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Album</button>
 
-<p style="text-align: center;">
-    <b>
-        You have saved {% if jumlah_item %}{{ jumlah_item }} albums{% endif %} in your collections!
-    </b>
-</p>
 <br />
-
-    <h5 style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
+    <h5 style="text-align: center; margin-bottom: 50px;">Last login: {{ last_login }}</h5>
 </body>
 
 {% endblock content %}
