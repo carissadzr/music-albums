@@ -3,15 +3,9 @@
 - Adaptable : https://musicalbumapp.adaptable.app
 - Current README.md : Tugas 2, 3, 4, 5, 6
 
-<details>
-<summary>How do I dropdown?</summary>
-<br>
-This is how you dropdown.
-</details>
+### 
+## TUGAS INDIVIDU 2
 
-<details>
-<summary> ## TUGAS INDIVIDU 2 </summary>
-<br>
 1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)**
 - Selain mengikuti tutorial 0 dan 1, dalam implementasi pengerjaan tugas individu 2 ini saya merujuk pada materi powerpoint yang dijelaskan di kelas dan membaca referensi dari beberapa website mengenai proses deployment dan penggunaan GitHub. Di samping itu, saya mencoba mencari referensi beberapa contoh unit testing yang sekiranya bisa saya implementasikan di project ini.
 
@@ -52,7 +46,6 @@ This is how you dropdown.
 
 Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat lunak mengatur struktur komponen dalam sebuah aplikasi dan mengelola interaksi antar komponen. Django memanfaatkan MVT untuk mencapai pemisahan logika aplikasi, MVC merupakan pola desain yang umum digunakan dalam pengembangan perangkat lunak, sedangkat MVVM digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI) yang mengandalkan banyak interaksi dari pengguna.
 
-</details>
 
 ###
 ## TUGAS INDIVIDU 3
