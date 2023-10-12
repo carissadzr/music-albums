@@ -689,3 +689,75 @@ Buka file `main.html` yang terdapat di direktori  `main/templates` dan modifikas
 ```
 
 Kemudian jalankan kembali proyek Django dengan perintah `python manage.py runserver`` dan bukalah http://localhost:8000 di browser untuk melihat hasilnya.
+
+
+###
+## TUGAS INDIVIDU 6
+
+### 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+**Asynchronous**
+
+- Komunikasi terjadi secara tertunda tanpa ketergantungan pada waktu.
+- Contoh media: e-mail, forum, membaca/menulis dokumen online.
+- Tidak terikat pada kecepatan waktu tetap; fleksibilitas dalam transformasi data.
+- Menggunakan metode serial, satu karakter/bit dikirim pada satu waktu.
+- Start bit dan stop bit untuk menyinkronkan perangkat pengirim dan penerima.
+- Variabilitas interval waktu memberikan fleksibilitas dalam kecepatan transmisi data.
+
+**Synchronous**
+
+- Komunikasi langsung, contohnya video call dan chatting.
+- Terjadi secara waktu nyata dengan keselarasan dan prediktabilitas.
+- Mengutamakan kecepatan tinggi dalam pengiriman data.
+- Data dikirim dalam blok, diperiksa ulang dengan Block Check Character (BCC).
+
+### 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+**Paradigma Event-Driven Programming:**
+
+Paradigma event-driven programming adalah suatu paradigma pemrograman di mana alur eksekusi program ditentukan oleh terjadinya kejadian atau peristiwa tertentu. Pada dasarnya, program ini berinteraksi dengan peristiwa (events) yang terjadi, dan tugas-tugas atau fungsi-fungsi tertentu dijalankan sebagai respons terhadap peristiwa tersebut. Konsep ini sangat relevan dalam pengembangan antarmuka pengguna (UI) pada aplikasi web atau desktop.
+
+**Contoh Penerapan pada JavaScript dan AJAX:**
+
+Misalkan kita memiliki tombol di halaman web kita, dan kita ingin sesuatu terjadi ketika tombol tersebut diklik. Dalam paradigma event-driven, kita akan menetapkan suatu fungsi atau aksi untuk dijalankan ketika event "click" pada tombol itu terjadi.
+
+Contoh kode menggunakan JavaScript dan AJAX:
+
+```
+html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contoh Event-Driven Programming dengan JavaScript dan AJAX</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // Menetapkan fungsi yang akan dijalankan ketika tombol di klik
+      $("#myButton").click(function(){
+        // Melakukan AJAX request ketika tombol diklik
+        $.ajax({
+          url: "example.php", // Contoh URL untuk AJAX request
+          success: function(result){
+            // Menangani hasil dari AJAX request
+            $("#output").html(result); // Menampilkan hasil di elemen dengan ID "output"
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+
+<button id="myButton">Klik Saya</button>
+<div id="output">Hasil AJAX akan muncul di sini.</div>
+
+</body>
+</html>
+```
+
+Pada contoh ini, fungsi yang ditetapkan akan dijalankan ketika tombol dengan ID "myButton" diklik. Fungsi tersebut melakukan AJAX request ke server (contoh URL "example.php") dan menanggapi hasilnya dengan memperbarui elemen dengan ID "output". Ini adalah contoh konkret dari paradigma event-driven programming di dalam konteks JavaScript dan AJAX.
+
+### 3. Jelaskan penerapan asynchronous programming pada AJAX.
+### 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).

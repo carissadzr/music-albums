@@ -15,6 +15,8 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import Http404
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 @login_required(login_url='/login')
 
@@ -145,3 +147,21 @@ def edit_product(request, id):
     context = {'form': form}
     return render(request, "edit_product.html", context)
 
+def get_product_json(request):
+    product_item = Product.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+
+def add_product_ajax(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+
+        # Validasi data (sesuai kebutuhan)
+        if not name or not amount or not description:
+            return JsonResponse({"success": False, "message": "Invalid data"})
+
+        # Tambahkan produk baru
+        product = Product.objects.create(name=name, amount=amount, description=description, user=request.user)
+        return JsonResponse({"success": True, "message": "Product added successfully"})
+    return JsonResponse({"success": False, "message": "Invalid request method"})
