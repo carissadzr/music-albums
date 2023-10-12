@@ -1,11 +1,17 @@
 ### Carissa Aida Zahra (2206082543) - PBP D
 
 - Adaptable : https://musicalbumapp.adaptable.app
-- Current README.md : Tugas 2, 3, dan 4 
+- Current README.md : Tugas 2, 3, 4, 5, 6
 
-### 
-## TUGAS INDIVIDU 2
+<details>
+<summary>How do I dropdown?</summary>
+<br>
+This is how you dropdown.
+</details>
 
+<details>
+<summary> ## TUGAS INDIVIDU 2 </summary>
+<br>
 1. **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)**
 - Selain mengikuti tutorial 0 dan 1, dalam implementasi pengerjaan tugas individu 2 ini saya merujuk pada materi powerpoint yang dijelaskan di kelas dan membaca referensi dari beberapa website mengenai proses deployment dan penggunaan GitHub. Di samping itu, saya mencoba mencari referensi beberapa contoh unit testing yang sekiranya bisa saya implementasikan di project ini.
 
@@ -46,6 +52,7 @@
 
 Perbedaan pokok antara ketiganya terletak pada cara setiap pola desain perangkat lunak mengatur struktur komponen dalam sebuah aplikasi dan mengelola interaksi antar komponen. Django memanfaatkan MVT untuk mencapai pemisahan logika aplikasi, MVC merupakan pola desain yang umum digunakan dalam pengembangan perangkat lunak, sedangkat MVVM digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI) yang mengandalkan banyak interaksi dari pengguna.
 
+</details>
 
 ###
 ## TUGAS INDIVIDU 3
@@ -791,20 +798,18 @@ Dalam contoh ini, kita membuat permintaan GET ke "https://api.example.com/data" 
 Fetch API dan jQuery AJAX adalah dua teknologi yang digunakan untuk membuat permintaan HTTP asynchronous dalam pengembangan web. 
 
 **Fetch API** adalah teknologi modern yang dibangun ke dalam JavaScript ES6 dan merupakan bagian dari spesifikasi browser web standar.
-(+) FMenggunakan Promises yang membuat penanganan respons asynchronous lebih mudah dan lebih intuitif.
-(+) Memberikan kontrol lebih besar atas permintaan HTTP, seperti mendukung operasi baca/tulis pada objek Request dan Response.
-(+) Mendukung service workers, yang penting untuk fitur offline dan push notifications.
-
-(-) Fetch API belum didukung oleh semua browser (meskipun sudah didukung oleh sebagian besar browser modern).
-(-)  Fetch API tidak secara otomatis mengirim atau menerima cookies, harus diatur secara manual.
+- (+) FMenggunakan Promises yang membuat penanganan respons asynchronous lebih mudah dan lebih intuitif.
+- (+) Memberikan kontrol lebih besar atas permintaan HTTP, seperti mendukung operasi baca/tulis pada objek Request dan Response.
+- (+) Mendukung service workers, yang penting untuk fitur offline dan push notifications.
+- (-) Fetch API belum didukung oleh semua browser (meskipun sudah didukung oleh sebagian besar browser modern).
+- (-)  Fetch API tidak secara otomatis mengirim atau menerima cookies, harus diatur secara manual.
 
 **jQuery** AJAX adalah bagian dari library jQuery yang telah ada sejak lama dan telah terbukti stabil dan dapat diandalkan.
-(+) jQuery AJAX memiliki dukungan browser yang luas, termasuk browser lama.
-(+) jQuery AJAX secara otomatis mengirim dan menerima cookies.
-(+) Jika Anda sudah menggunakan jQuery di situs Anda, menggunakan jQuery AJAX tidak memerlukan dependensi tambahan.
-
-(-) jQuery AJAX didasarkan pada callback, yang bisa menjadi rumit untuk dikelola jika Anda memiliki banyak operasi asynchronous.
-(-) Jika Anda tidak menggunakan fitur lain dari jQuery, memuat seluruh library hanya untuk AJAX bisa menjadi pemborosan.
+- (+) jQuery AJAX memiliki dukungan browser yang luas, termasuk browser lama.
+- (+) jQuery AJAX secara otomatis mengirim dan menerima cookies.
+- (+) Jika Anda sudah menggunakan jQuery di situs Anda, menggunakan jQuery AJAX tidak memerlukan dependensi tambahan.
+- (-) jQuery AJAX didasarkan pada callback, yang bisa menjadi rumit untuk dikelola jika Anda memiliki banyak operasi asynchronous.
+- (-) Jika Anda tidak menggunakan fitur lain dari jQuery, memuat seluruh library hanya untuk AJAX bisa menjadi pemborosan.
 
 Untuk mengembangkan aplikasi modern dengan banyak fitur asynchronous dan/atau offline, Fetch API mungkin pilihan yang lebih baik. Namun, jika pada situs yang perlu mendukung berbagai macam browser (termasuk browser lama) atau jika Anda sudah menggunakan jQuery, maka jQuery AJAX mungkin pilihan yang lebih baik.
 
