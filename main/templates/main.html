@@ -134,6 +134,7 @@
                             <a href='edit-product/${item.pk}' class="btn btn-light" style="background-color: #a32451; color: #fbf8ee;">
                                 <i class="fa-regular fa-pen-to-square"></i> Edit
                             </a>
+                            
                             <a href='delete_product/${item.pk}' class="btn btn-light">
                                 <i class="fa-solid fa-trash"></i> Delete
                             </a>
@@ -144,6 +145,7 @@
             document.getElementById("productContainer").appendChild(card);
         });
     }
+
 
     function addProduct() {
     fetch("{% url 'main:add_product_ajax' %}", {
