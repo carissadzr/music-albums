@@ -151,11 +151,6 @@ def add_product_ajax(request):
         name = request.POST.get("name")
         amount = request.POST.get("amount")
         description = request.POST.get("description")
-
-        # Validasi data (sesuai kebutuhan)
-        if not name or not amount or not description:
-            return JsonResponse({"success": False, "message": "Invalid data"})
-
         # Tambahkan produk baru
         product = Product.objects.create(name=name, amount=amount, description=description, user=request.user)
 

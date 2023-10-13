@@ -90,8 +90,8 @@
                         <input type="text" class="form-control" id="name" name="name"></input>
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="col-form-label">Amount of Songs</label>
-                        <input type="number" class="form-control" id="price" name="price"></input>
+                        <label for="amount" class="col-form-label">Amount of Songs</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="col-form-label">Description</label>
@@ -152,10 +152,8 @@
     })
     .then(response => response.json())
     .then(data => {
-        if (data.status === 'success') {
-            refreshProducts();
-            document.getElementById("jumlahItem").innerText = data.jumlah_item;
-        }
+        refreshProducts();
+        document.getElementById("jumlahItem").innerText = data.jumlah_item;
     });
 
     document.getElementById("form").reset();
