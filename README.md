@@ -807,3 +807,166 @@ Fetch API dan jQuery AJAX adalah dua teknologi yang digunakan untuk membuat perm
 Untuk mengembangkan aplikasi modern dengan banyak fitur asynchronous dan/atau offline, Fetch API mungkin pilihan yang lebih baik. Namun, jika pada situs yang perlu mendukung berbagai macam browser (termasuk browser lama) atau jika Anda sudah menggunakan jQuery, maka jQuery AJAX mungkin pilihan yang lebih baik.
 
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+### Membuat Fungsi untuk Mengembalikan Data JSON
+
+Pertama, saya membuat fungsi `get_product_json` yang menerima parameter `request` pada `views.py`
+
+```
+def get_product_json(request):
+    product_item = Product.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+```
+
+### Membuat Fungsi untuk Menambahkan Produk dengan AJAX
+
+Pada berkas `views.py` tambahkan import `from django.views.decorators.csrf import csrf_exempt`. Lalu buatlah fungsi baru pada dengan nama `add_product_ajax` yang menerima parameter `request`. Jangan lupa tambahkan dekorator `@csrf_exempt` di atas fungsi tersebut
+
+```
+...
+@csrf_exempt
+def add_product_ajax(request):
+if request.method == 'POST':
+    name = request.POST.get("name")
+    price = request.POST.get("price")
+    description = request.POST.get("description")
+    user = request.user
+
+    new_product = Product(name=name, price=price, description=description, user=user)
+    new_product.save()
+
+    return HttpResponse(b"CREATED", status=201)
+
+return HttpResponseNotFound()
+
+```
+
+### Menambahkan Routing Untuk Fungsi get_product_json dan add_product_ajax
+
+Pada berkas `urls.py` pada folder `main`, impor fungsi `get_product_json` serta `add_product_ajax`. Lalu tambahkan kode berikut.
+
+```
+...
+path('get-product/', get_product_json, name='get_product_json'),
+path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
+```
+
+### Menampilkan Data Product dengan Fetch() API
+Pertama, bukalah main.html pada main/templates dan hapus bagian kode table yang sudah ada. Tambahkan kode berikut sebagai struktur table (jika menggunakan table)
+
+```
+<table id="product_table"></table>
+```
+
+Selanjutnya, buat block `<Script>` di bagian bawah berkas dan buat fungsi baru pada block `<Script>` tersebut dengan nama `getProducts()`.
+
+```
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+</script>
+```
+
+Buat fungsi baru pada block `<Script>` dengan nama refreshProducts() yang digunakan untuk me-refresh data produk secara asynchronous.
+
+```
+<script>
+    ...
+    async function refreshProducts() {
+        document.getElementById("product_table").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = `<tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Date Added</th>
+        </tr>`
+        products.forEach((item) => {
+            htmlString += `\n<tr>
+            <td>${item.fields.name}</td>
+            <td>${item.fields.price}</td>
+            <td>${item.fields.description}</td>
+            <td>${item.fields.date_added}</td>
+        </tr>` 
+        })
+        
+        document.getElementById("product_table").innerHTML = htmlString
+    }
+
+    refreshProducts()
+</script>
+```
+
+### Membuat Modal Sebagai Form untuk Menambahkan Produk
+
+Untuk melakukan stel ini, tambahkan kode berikut untuk mengimplementasikan modal (Bootstrap) pada aplikasi dan tambahkan `button` untuk menampilkan modal
+
+```
+...
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+...
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+
+```
+
+### Menambahkan Data Product dengan AJAX
+
+Buat fungsi baru pada block `<Script>` dengan nama `addProduct()` lalu isi dengan kode berikut
+
+```
+<script>
+    ...
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+</script>
+```
+
+Tambahkan fungsi `onclick` pada button `"Add Product"` pada modal untuk menjalankan fungsi `addProduct()` 
+
+```
+<script>
+...
+document.getElementById("button_add").onclick = addProduct
+</script>
+```
+
+Terakhir, coba jalankan dengan mengakses http://localhost:8000/ untuk melihat perubahan dengan menggunakan AJAX

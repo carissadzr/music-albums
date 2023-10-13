@@ -134,17 +134,10 @@
                             <a href='edit-product/${item.pk}' class="btn btn-light" style="background-color: #a32451; color: #fbf8ee;">
                                 <i class="fa-regular fa-pen-to-square"></i> Edit
                             </a>
+                            <a href='delete_product/${item.pk}' class="btn btn-light">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
                         </div>
-
-                        {% for item in items %}
-                            <a href="{% url 'main:edit_product' id=item.pk %}">Edit</a>
-                            <form method="post" action="{% url 'main:delete_product' id=item.pk %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="product_id" value="{{ item.pk }}">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-
-                        {% endfor %}
                     </div>
                 </div>`;
 

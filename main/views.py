@@ -120,17 +120,12 @@ def update_product_amount(request):
     return redirect('main:show_main')
 
 @login_required(login_url='/login')
-def delete_product(request):
-    if request.method == 'POST':
-        product_id = request.POST.get('product_id')
+def delete_product(request, id):
+    product = Product.objects.get(pk = id, user=request.user)
+    product.delete()
 
-        try:
-            product = Product.objects.get(pk=product_id, user=request.user)
-            product.delete()
-        except Product.DoesNotExist:
-            pass  # Produk tidak ditemukan atau sudah dihapus
+    return HttpResponseRedirect(reverse('main:show_main'))
 
-    return redirect('main:show_main')
 
 def edit_product(request, id):
     # Get product berdasarkan ID
