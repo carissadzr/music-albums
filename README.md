@@ -1,6 +1,6 @@
 ### Carissa Aida Zahra (2206082543) - PBP D
 
-- Adaptable : https://musicalbumapp.adaptable.app
+- Link : https://carissa-aida-tugas.pbp.ui.ac.id
 - Current README.md : Tugas 2, 3, 4, 5, 6
 
 ### 
