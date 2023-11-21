@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
@@ -160,3 +161,22 @@ def add_product_ajax(request):
         return JsonResponse({'success': True, 'message': 'Product added successfully', 'jumlah_item': jumlah_item})
     
     return JsonResponse({"success": False, "message": "Invalid request method"})
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = Product.objects.create(
+            user = request.user,
+            name = data["name"],
+            price = int(data["price"]),
+            description = data["description"]
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
