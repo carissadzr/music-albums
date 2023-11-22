@@ -7,7 +7,6 @@ from main.models import Product
 from django.http import HttpResponse
 from django.core import serializers
 
-
 @csrf_exempt
 def login(request):
     username = request.POST['username']
@@ -20,19 +19,19 @@ def login(request):
             return JsonResponse({
                 "username": user.username,
                 "status": True,
-                "message": "Login sukses!"
+                "message": "Login successful!"
                 # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
             }, status=200)
         else:
             return JsonResponse({
                 "status": False,
-                "message": "Login gagal, akun dinonaktifkan."
+                "message": "Login failed. Account deactivated."
             }, status=500)
 
     else:
         return JsonResponse({
             "status": False,
-            "message": "Login gagal, periksa kembali email atau kata sandi."
+            "message": "Login failed, make sure to input the correct email and password."
         }, status=401)
     
 def show_json(request):
